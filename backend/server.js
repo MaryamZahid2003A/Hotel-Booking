@@ -2,7 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose';
 import db from './config/db.js';
-
+import router from './routers/UserRouters.js';
 
 
 dotenv.config();
@@ -13,8 +13,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 
 
-
 app.get('/',(req,res)=>res.send("server is ready"))
+app.use('/api/users',router)
 
 app.listen(port,(req,res)=>{
     console.log('Server started at port 8000')
