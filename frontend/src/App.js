@@ -1,10 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Layout from './layout';
+import Header from './Header';
 function App() {
   return (
-    <div>
-      <h1 className='text-red-400'>my name is mayam zahid</h1>
+    <div className='main'>
+        <div className='section'>
+            <Layout/>
+            <Header/>
+        </div>
     </div>
   );
 }

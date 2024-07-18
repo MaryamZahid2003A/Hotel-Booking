@@ -1,0 +1,13 @@
+.layout-header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(0, 0, 0,0.3); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    color: white; /* Text color */
+    text-align: center;
+    height:6rem;
+  }
