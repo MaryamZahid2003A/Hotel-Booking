@@ -15,7 +15,7 @@ export default function Layout() {
         </div>
         </Link>
         <Link to='/signup'>
-              <button className='w-28 h-14 mt-6 bg-yellow-400 font-bold text-black mr-14 hover:bg-yellow-200 hover:text-black transition ease-in-out delay-200 '>
+              <button className='w-28 h-14 mt-6 bg-yellow-400 font-bold text-black mr-14 hover:bg-yellow-600 hover:text-black transition ease-in-out delay-200 '>
                 Sign Up
               </button>
         </Link>
