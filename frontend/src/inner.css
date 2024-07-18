@@ -5,7 +5,7 @@
     right: 0;
     bottom: 0;
     background: rgb(0, 0, 0,0.3); /* Semi-transparent background */
-    display: flex;
+   
     align-items: center;
     color: white; /* Text color */
     text-align: center;
