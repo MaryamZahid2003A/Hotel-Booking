@@ -28,6 +28,11 @@ schema.pre ('save',async function(next){
     next();
 })
 
+
+schema.methods.checkPassword= async function(Entered){
+    return await bcrypt.compare(Entered,this.password)
+}
+
 const User=  mongoose.model('User',schema)
 
 export default User;

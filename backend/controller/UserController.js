@@ -1,11 +1,33 @@
 import expressAsyncHandler from "express-async-handler";
 import generateToken from "../utilis/generateToken.js";
 import User from "../models/UserModel.js";
+import bcrypt from 'bcryptjs'
+// Login
+
+
 
 // Login
 const Login = expressAsyncHandler(async (req, res) => {
-   
+
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+        
+            if (user && (await user.checkPassword(password))){
+                generateToken(res,user._id);
+                res.status(200).json({
+                    message : "Sucessfully Login ",
+                    _id:user._id,
+                    name:user.name,
+                    email:user.email,
+                    password:user.password
+                })
+            }
+            else{
+                res.status(401).json({ message: "Invalid Email or Password" });
+            }
+    
 });
+
 
 // Register
 const register = expressAsyncHandler(async (req, res) => {
@@ -24,7 +46,7 @@ const register = expressAsyncHandler(async (req, res) => {
                 email: user.email
             });
         } else {
-            res.status(400).json({message : ' Invalid Data'})
+            res.status(400).json({message : 'Invalid Data'})
         }
     } catch (error) {
       
