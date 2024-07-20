@@ -1,12 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { setCredentials } from './store/slice/UserSlice';
+import { useRegisterMutation } from './store/slice/UserApiSlice';
+import { useDispatch } from 'react-redux';
+import {toast,ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignIn() { 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit,getValues, formState: { errors } } = useForm();
+  const dispatch=useDispatch()
+ const [registerApi]=useRegisterMutation();
+ const navigate=useNavigate();
  
-  const onSubmit = (data) => {
-    console.log(data);
+
+  const onSubmit = async(data) => {
+    const {name,email,password}=data
+        try{
+          const res=await registerApi({email,name,password}).unwrap();
+          dispatch(setCredentials({...res}))
+          toast.success('Register Sucessfully');
+         
+        }
+        catch(error){
+         console.error(error?.data?.message || error.message)
+        }
   };
 
   return (
@@ -20,6 +39,7 @@ export default function SignIn() {
           {...register('name', { required: true })}
         />
         {errors.name && <p className='text-red-800 ml-8'>This field is required</p>}
+        
        
        
         <input
@@ -47,7 +67,7 @@ export default function SignIn() {
         {errors.password && <p className='text-red-800 ml-8'>{errors.password.message}</p>}
 
         <div className='w-full ml-16 mr-16 py-2 px-3 rounded mt-7 h-11 flex flex-col'>
-          <button className='w-48 h-8 rounded-2xl bg-red-600 hover:bg-red-900 text-white mt-2'>Sign In</button>
+          <button className='w-48 h-8 rounded-2xl bg-red-600 hover:bg-red-900 text-white mt-2'>Sign Up</button>
           <Link to="/login">
             <div className='flex flex-row mt-4'>
               <h1 className='text-black'>Already Register?</h1>
@@ -57,6 +77,7 @@ export default function SignIn() {
         </div>
       </form>
       <div className='w-full ml-30 mr-16 py-2 px-3 rounded mt-8 h-11 flex justify-center'></div>
+      <ToastContainer/>
     </div>
   );
 }

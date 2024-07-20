@@ -5,7 +5,9 @@ import Header from './Header';
 import {Routes,Route} from 'react-router-dom'
 import SignUp from './SignUp';
 import Reserve from './Reserve';
+import { ToastContainer } from 'react-toastify';
 import SignIn from './SignIn';
+
 function App() {
   return (
     <div className='main'>
@@ -20,6 +22,7 @@ function App() {
           </Routes>
 
         </div>
+        <ToastContainer/>
     </div>
   );
 }

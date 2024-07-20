@@ -50,14 +50,19 @@ const register = expressAsyncHandler(async (req, res) => {
         }
     } catch (error) {
       
-        res.status(400).json({ message: error.message });
+        res.status(401).json({ message: error.message });
     }
 });
 
 // Logout
 const logout = expressAsyncHandler(async (req, res) => {
-  
-    res.status(200).json({ message: "Successfully Logged Out!" });
+  res.cookie('jwt','',{
+    httpOnly:true,
+    expires:new Date(0)
+  })
+  res.status(200).json({
+    message: "Logout Sucessfully ! "
+  })
 });
 
 
