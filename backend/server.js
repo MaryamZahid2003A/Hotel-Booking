@@ -3,8 +3,13 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose';
 import db from './config/db.js';
 import router from './routers/UserRouters.js';
+import {v2 as cloudinary} from 'cloudinary'
 
-
+cloudinary.config({
+    cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
+    api_key:process.env.CLOUDINARY_API_KEY,
+    api_secret_secret:process.env.CLOUDINARY_API_SECRET,
+})
 dotenv.config();
 const port = process.env.PORT || 5000;
 db();
