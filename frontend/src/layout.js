@@ -31,8 +31,8 @@ export default function Layout() {
       <Link to='/'>
         <div className='ml-10 flex flex-row'>
           <img src="https://cdn-icons-png.flaticon.com/128/1090/1090663.png" width='70' height='30' className='mt-3'/>
-          <h1 className='text-white text-2xl ml-10 mt-8 font-serif italic'>
-            <span className='font-bold text-2xl'>Hill Town</span> Resort
+          <h1 className='text-white text-3xl ml-10 mt-8 font-sans italic hidden sm:block md:inline-block '>
+            <span className='font-extrabold text-3xl '>Hill Town</span> Resort
           </h1> 
         </div>
         </Link>
@@ -43,11 +43,23 @@ export default function Layout() {
           </button>
       </Link>):
         (
-        <div>
-
-        <h1 className='text-2xl text-white font-mono pr-5 mt-1'>{userInfo.name}</h1>
-          <button className='w-20 h-10 mt-3 mb-3 bg-yellow-400 font-bold text-black mr-14 rounded-sm hover:bg-yellow-600 hover:text-black transition ease-in-out delay-200 ' onClick={logoutHandle}> Logout</button>
-
+        <div className='flex flex-row '>
+              <div className='flex flex-col sm:flex-row '>
+                  <Link to='/booking'>
+                  <button className='w-28 h-10 mt-6 bg-yellow-400 font-bold text-black mr-14 rounded-sm hover:bg-yellow-600 hover:text-black transition ease-in-out delay-200 '>
+                    My Booking
+                  </button>
+                  </Link>
+                  <Link to='/hotel'>
+                      <button className='w-24 h-10 mt-6 bg-yellow-400 font-bold text-black mr-14 rounded-sm hover:bg-yellow-600 hover:text-black transition ease-in-out delay-200 '>
+                        My Hotel
+                      </button>
+                  </Link>
+              </div>
+              <div>
+                <h1 className='text-2xl text-white mr-14 mt-1'>{userInfo.name}</h1>
+                  <button className='w-20 h-10 mt-3 mb-3 bg-yellow-400 font-bold text-black mr-14 rounded-sm hover:bg-yellow-600 hover:text-black transition ease-in-out delay-200 ' onClick={logoutHandle}> Logout</button>
+              </div>
           </div>
         )
       }

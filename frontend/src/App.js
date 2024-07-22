@@ -7,6 +7,8 @@ import SignUp from './SignUp';
 import Reserve from './Reserve';
 import { ToastContainer } from 'react-toastify';
 import SignIn from './SignIn';
+import Booking from './Booking';
+import Hotel from './Hotel';
 
 function App() {
   return (
@@ -18,6 +20,9 @@ function App() {
             <Route path='/signup' element={<SignUp/>}/>
             <Route path='/reserve' element={<Reserve/>}/>
             <Route path="/login" element={<SignIn />} />
+            <Route path="/booking" element={<Booking />} />
+            <Route path="/hotel" element={<Hotel />} />
+
         
           </Routes>
 

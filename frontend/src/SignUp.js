@@ -15,17 +15,17 @@ export default function SignIn() {
  const navigate=useNavigate();
  
 
-  const onSubmit = async(data) => {
-    const {name,email,password}=data
-        try{
-          const res=await registerApi({email,name,password}).unwrap();
-          dispatch(setCredentials({...res}))
-          toast.success('Register Sucessfully');
-         
-        }
-        catch(error){
-         console.error(error?.data?.message || error.message)
-        }
+const onSubmit = async (data) => {
+    const { name, email, password } = data;
+    try {
+      const res = await registerApi({ email, name, password }).unwrap();
+      dispatch(setCredentials({ ...res }));
+      toast.success('Registered Successfully', { autoClose: 2000 }); 
+      navigate('/login'); 
+    } catch (error) {
+      toast.error(error?.data?.message || error.message, { autoClose: 2000 });
+      console.error(error?.data?.message || error.message);
+    }
   };
 
   return (
