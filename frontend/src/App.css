@@ -1,29 +1,19 @@
-body{
-  background-image: url('https://images.unsplash.com/photo-1517840901100-8179e982acb7?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWx8ZW58MHx8MHx8fDA%3D');
-  background-size: cover;
-  background-repeat:no-repeat;
-  height: 100vh; /* Ensure the div has some height */
-  width: 100%; 
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items:center;
-  color: rgb(1, 7, 16); /* Text color */
-  
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: auto; /* Allow scrolling */
 }
 
-body{
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+body {
+  background-image: url('https://images.unsplash.com/photo-1517840901100-8179e982acb7?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWx8ZW58MHx8MHx8fDA%3D');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  width: 100%;
   display: flex;
-  align-items:center;
+  flex-direction: column;
+  align-items: center;
   color: rgb(1, 7, 16); /* Text color */
-  
-  
 }

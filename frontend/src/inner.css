@@ -4,8 +4,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgb(0, 0, 0,0.3); /* Semi-transparent background */
-   
+    background: rgb(0, 0, 0,0.9); /* Semi-transparent background */   
     align-items: center;
     color: white; /* Text color */
     text-align: center;
