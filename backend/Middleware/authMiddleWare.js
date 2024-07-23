@@ -1,0 +1,34 @@
+import jwt from 'jsonwebtoken';
+import expressAsyncHandler from 'express-async-handler';
+import User from '../models/UserModel.js';
+
+const protect = expressAsyncHandler(async (req, res, next) => {
+    try {
+        let token;
+        console.log('Checking for token in cookies...');
+        if (req.cookies && req.cookies.jwt) {
+            token = req.cookies.jwt;
+            console.log('Token found:', token);
+
+            const decoded = jwt.verify(token, process.env.SECRET_KEY);
+            console.log('Token decoded:', decoded);
+
+            req.user = await User.findById(decoded.userId).select('-password');
+            console.log('User found:', req.user);
+
+            next();
+        } else {
+            console.log('No token found in cookies');
+            res.status(400).json({
+                message: "Unauthorized User: Invalid Token"
+            });
+        }
+    } catch (error) {
+        console.error('Error verifying token:', error);
+        res.status(400).json({
+            message: "Unauthorized User: No Token"
+        });
+    }
+});
+
+export { protect };
