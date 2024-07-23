@@ -2,11 +2,18 @@ import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './hotel.css';
+import { Form } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import Type from '../config/typeConfig';
 
 export default function AddHotel() {
+    const {handleSubmit,register, formState:{errors}}=useForm();
+    const handleLogin = async (data) => {
+       
+    }
   return (
     <div className="hotel ">
-      <form className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg pt-10">
+      <form className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg pt-10" onSubmit={handleSubmit(handleLogin)}>
         <h1 className="text-black text-center bg-white text-3xl font-bold  mt-6">
           Add Hotel
         </h1>
@@ -22,7 +29,10 @@ export default function AddHotel() {
                 name="name"
                 className="input"
                 placeholder="Name"
+                {...register('name',{required:true})}
             />
+            {errors.name &&  <p className='text-red-800 ml-8'>This Field is required</p>}
+
         </div>
 
         {/* City and Country */}
@@ -36,7 +46,10 @@ export default function AddHotel() {
               name="city"
               className="input"
               placeholder="City"
+              {...register('city',{required:true})}
             />
+            {errors.city &&  <p className='text-red-800 ml-8'>This Field is required</p>}
+
           </div>
           <div className="w-full md:w-1/2 px-2 ml-8 mr-8">
             <label htmlFor="country" className="label">
@@ -47,7 +60,11 @@ export default function AddHotel() {
               name="country"
               className="input"
               placeholder="Country"
+              {...register('country',{required:true})}
+
             />
+            {errors.country && <p className='text-red-800 ml-8'>This Field is required</p>}
+
           </div>
         </div>
 
@@ -61,7 +78,11 @@ export default function AddHotel() {
             name="description"
             className="textinput"
             placeholder="Add Hotel Description"
+            {...register('description',{required:true})}
+
           />
+            {errors.description && <p className='text-red-800 ml-8'>This Field is required</p>}
+
         </div>
 
         {/* Price Per Night */}
@@ -75,21 +96,37 @@ export default function AddHotel() {
             
             className="input"
             placeholder="Price Per Night"
+            {...register('price',{required:true})}
+
           />
+            {errors.price && <p className='text-red-800 ml-8'>This Field is required</p>}
+
         </div>
 
         {/* Type */}
-        <div className=" mt-8">
-          <label htmlFor="type" className="label">
-            Type
-          </label>
-          <input
-            id="type"
-            name="type"
-            className="input"
-            placeholder="Type"
-          />
-        </div>
+        <div>
+      <h2 className="text-2xl font-bold mb-3">Type</h2>
+            <div className="grid grid-cols-5 gap-2">
+                {Type.map((type) => (
+                <label className='w-24 h-15 bg-slate-400'>
+                    <input
+                    type="radio"
+                    value={type}
+                    {...register("type", {
+                        required: "This field is required",
+                    })}
+                    className="hidden"
+                    />
+                    <span>{type}</span>
+                </label>
+                ))}
+            </div>
+            {errors.type && (
+                <span className="text-red-500 text-sm font-bold">
+                {errors.type.message}
+                </span>
+            )}
+            </div>
 
         {/* Facilities */}
         <div className='flex flex-wrap'>
@@ -105,7 +142,11 @@ export default function AddHotel() {
                 max="5"
                 className="input"
                 placeholder="Select a Rating"
+            {...register('star',{required:true})}
+
             />
+            {errors.star && <p className='text-red-800 ml-8'>This Field is required</p>}
+
          </div>
             <div className=" mt-8 ml-10">
             <label htmlFor="facilities" className="label">
@@ -194,7 +235,6 @@ export default function AddHotel() {
               name="adult"
               type="number"
                 min="1"
-               
               className="input"
               placeholder="Adult"
             />
