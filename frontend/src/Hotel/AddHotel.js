@@ -6,8 +6,8 @@ import './hotel.css';
 export default function AddHotel() {
   return (
     <div className="hotel ">
-      <form className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
-        <h1 className="text-black text-center bg-white text-2xl font-bold  mt-6">
+      <form className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg pt-10">
+        <h1 className="text-black text-center bg-white text-3xl font-bold  mt-6">
           Add Hotel
         </h1>
 
@@ -72,7 +72,7 @@ export default function AddHotel() {
           <input
             id="price"
             name="price"
-            type="number"
+            
             className="input"
             placeholder="Price Per Night"
           />
@@ -192,6 +192,9 @@ export default function AddHotel() {
             <input
               id="adult"
               name="adult"
+              type="number"
+                min="1"
+               
               className="input"
               placeholder="Adult"
             />
@@ -203,6 +206,9 @@ export default function AddHotel() {
             <input
               id="children"
               name="children"
+              type="number"
+                min="1"
+                
               className="input"
               placeholder="Children"
             />

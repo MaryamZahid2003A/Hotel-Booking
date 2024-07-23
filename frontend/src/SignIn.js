@@ -27,7 +27,7 @@ export default function SignIn() {
   };
 
   return (
-    <div className='flex justify-center items-center flex-col lg:ml-64 sm:ml-6 md:ml-20'>
+    <div className='flex justify-center items-center flex-col sm:ml-6 md:ml-20 mt-20'>
       <form className='flex flex-col mt-10 mx-4 sm:mt-20 sm:mx-30 md:mx-40 lg:mx-72 h-96 w-96 bg-white rounded-lg' onSubmit={handleSubmit(handleLogin)}>
         <input
           id='email'
