@@ -9,6 +9,8 @@ import { ToastContainer } from 'react-toastify';
 import SignIn from './SignIn';
 import Booking from './Booking';
 import Hotel from './Hotel';
+import AddHotel from './Hotel/AddHotel';
+import ManageHotel from './Hotel/ManageHotel';
 
 function App() {
   return (
@@ -21,7 +23,9 @@ function App() {
             <Route path='/reserve' element={<Reserve/>}/>
             <Route path="/login" element={<SignIn />} />
             <Route path="/booking" element={<Booking />} />
-            <Route path="/hotel" element={<Hotel />} />
+            <Route path="/Addhotel" element={<AddHotel />} />
+            <Route path="/Managehotel" element={<ManageHotel />} />
+
 
         
           </Routes>

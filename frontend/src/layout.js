@@ -50,7 +50,7 @@ export default function Layout() {
                     My Booking
                   </button>
                   </Link>
-                  <Link to='/hotel'>
+                  <Link to='/ManageHotel'>
                       <button className='w-24 h-10 mt-6 bg-yellow-400 font-bold text-black mr-14 rounded-sm hover:bg-yellow-600 hover:text-black transition ease-in-out delay-200 '>
                         My Hotel
                       </button>

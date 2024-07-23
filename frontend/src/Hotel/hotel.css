@@ -1,0 +1,68 @@
+.hotel{
+    min-width:50rem;
+    background-color:rgb(255, 255, 255);
+    border-radius:0.5rem;
+    margin-left:40%;;
+    margin-right:40%;
+    margin-top:70%
+}
+.label{
+    padding-top:3rem;
+    margin-bottom:0.5rem;
+    font-size:1rem;
+    color:black;
+    font-weight: bold;
+    margin-left:2rem;
+    margin-bottom:1rem;
+    margin-top:1rem;
+  }
+
+.guest{
+    margin-left:2rem;
+    width:95%;
+    height:8rem;
+    background-color:rgb(228, 219, 219);
+}
+  
+.input{
+    border:2px solid rgb(226, 221, 221);
+    margin-right:3rem;
+    width:95%;
+    border-radius:1px;
+    height:3rem;
+    margin-top:0.5rem;
+    
+    padding-left:1rem;
+    margin-left:1rem
+
+
+}
+.textinput{
+    border:2px solid rgb(226, 221, 221);
+    margin-right:3rem;
+    width:95%;
+    border-radius:1px;
+    height:7rem;
+    margin-top:0.5rem;
+   
+    padding-left:1rem;
+    margin-left:1rem
+
+
+}
+
+@media (max-width: 768px) {
+    .hotel {
+        min-width: 30rem; 
+        margin-left: 10%; 
+        margin-right: 10%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .hotel {
+        min-width: 15rem; 
+        margin-left: 5%; 
+        margin-right: 5%; 
+    }
+}
