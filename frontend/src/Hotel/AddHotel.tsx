@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer ,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './hotel.css';
 import { useForm,FormProvider } from 'react-hook-form';
@@ -7,6 +7,9 @@ import Details from './details.tsx';
 import Facility from './Facility.tsx';
 import TypeForm from './TypeForm.tsx';
 import Guest from './Guest.tsx';
+import { useDispatch, UseDispatch,useSelector } from 'react-redux';
+import { setHotelCredentials } from '../store/slice/HotelSlice.js';
+import { useAddHotelMutation } from '../store/slice/HotelApiSlice.js';
 export type HotelFormData = {
   name: string;
   city: string;
@@ -27,7 +30,8 @@ function AddHotel() {
   
   const method=useForm<HotelFormData>();
   const { handleSubmit, formState: { errors } } = method;
-
+  const dispatch=useDispatch();
+  const [addHotel]=useAddHotelMutation();
  const onsubmit=handleSubmit(async(JsonData: HotelFormData)=>{
   const formData=new FormData();
   formData.append('name',JsonData.name);
@@ -61,9 +65,16 @@ function AddHotel() {
   JsonData.facilities.map((facility,index)=>{
     formData.append(`facilities${index}`,facility)
   })
-  console.log(JsonData.facilities)
+ 
+try{
+  const res=await addHotel({formData}).unwrap();
+  dispatch(setHotelCredentials({...res}))
+  toast.success('Hotel Added Sucessfully !');
+}
+ catch(error){
+  console.error(error?.data?.message || error.message)
+ }
 
-  console.log(formData)
 
  })
   return (
