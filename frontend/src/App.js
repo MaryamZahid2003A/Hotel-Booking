@@ -8,9 +8,7 @@ import Reserve from './Reserve';
 import { ToastContainer } from 'react-toastify';
 import SignIn from './SignIn';
 import Booking from './Booking';
-import Hotel from './Hotel';
-import AddHotel from './Hotel/AddHotel';
-import ManageHotel from './Hotel/ManageHotel';
+import { Manage } from './Hotel/Manage.tsx';
 import PrivateRoute from './privateRoute';
 
 function App() {
@@ -24,13 +22,9 @@ function App() {
             <Route path='/reserve' element={<Reserve/>}/>
             <Route path="/login" element={<SignIn />} />
             <Route path='/' element={<PrivateRoute/>}>
-                <Route path="/Managehotel" element={<ManageHotel />} />
+                <Route path="/Managehotel" element={<Manage />} />
                 <Route path="/booking" element={<Booking />} />
-
             </Route>
-
-
-        
           </Routes>
 
         </div>

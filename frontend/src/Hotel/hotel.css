@@ -17,9 +17,11 @@
 
 .guest{
     margin-left:2rem;
+    margin-right:2rem;
+
     width:95%;
     height:8rem;
-    background-color:rgb(228, 219, 219);
+    background-color:gray;
 }
   
 .input{
@@ -48,6 +50,48 @@
 
 
 }
+.TypeGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem; 
+    margin-left:2rem;
+    margin-right:2rem;
+  }
+.button{
+    background-color: rgb(7, 101, 116);
+    color:white;
+    width:7rem;
+    padding:1rem;
+    align-items:center;
+    border-radius:2rem;
+    text-align:center;
+}
+.button:hover{
+    background-color: rgb(5, 76, 87);
+    color:white;
+    padding:1rem;
+    width:7rem;
+    align-items:center;
+    border-radius:2rem;
+    text-align:center;
+}
+.typeLabel{
+    cursor: pointer;
+    padding:1rem;
+    background-color: rgb(206, 200, 200);
+    color:black;
+    border-radius: 2rem;
+    text-align:center;
+}
+
+.typeHoverLabel{
+    cursor: pointer;
+    padding:1rem;
+    background-color: rgb(102, 137, 148);
+    color:black;
+    border-radius: 2rem;
+    text-align:center;
+}
 
 @media (max-width: 768px) {
     .hotel {
@@ -55,6 +99,30 @@
         margin-left: 10%; 
         margin-right: 10%; 
     }
+    .TypeGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem; 
+        margin-left:2rem;
+        margin-right:2rem;;
+      }
+      .typeLabel{
+        cursor: pointer;
+       
+        background-color: gray;
+        color:black;
+    
+        text-align:center;
+    }
+    .typeHoverLabel{
+        cursor: pointer;
+      
+        background-color: rgb(102, 137, 148);
+        color:black;
+       
+        text-align:center;
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -62,5 +130,28 @@
         min-width: 15rem; 
         margin-left: 5%; 
         margin-right: 5%; 
+    }
+    .TypeGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem; 
+        margin-left:2rem;
+        margin-right:2rem;;
+      }
+      .typeLabel{
+        cursor: pointer;
+       
+        background-color: gray;
+        color:black;
+    
+        text-align:center;
+    }
+    .typeHoverLabel{
+        cursor: pointer;
+      
+        background-color: rgb(102, 137, 148);
+        color:black;
+       
+        text-align:center;
     }
 }

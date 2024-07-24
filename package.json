@@ -22,6 +22,8 @@
   "homepage": "https://github.com/MaryamZahid2003A/Hotel-Booking#readme",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.3.0",
     "cookie-parser": "^1.4.6",
@@ -34,6 +36,8 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.5.4"
   }
 }
