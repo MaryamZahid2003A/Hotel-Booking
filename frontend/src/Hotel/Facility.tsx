@@ -25,7 +25,7 @@ function Facility() {
               placeholder="Select a Rating"
               {...register('starRating', { required: true })}
             />
-            {errors.starRating && <p className='text-red-800 ml-8'>This Field is required</p>}
+            {errors.starRating && <p className='text-red-800 ml-8 font-bold'>This Field is required</p>}
           </div>
           <div>
       <h2 className="text-1xl  font-bold mb-3 ml-10 mt-7">Facilities</h2>
@@ -50,11 +50,10 @@ function Facility() {
           </label>
         ))}
       </div>
-      {errors.facilities && (
-        <span className="text-red-300 text-sm font-bold">
-          {errors.facilities.message}
-        </span>
-      )}
+      {errors.facilities && <p className='text-red-800 ml-8 font-bold'>This Field is required</p>}
+
+
+      
     </div>
   </div>
     

@@ -37,7 +37,7 @@ function Image(){
             },
           })}
         />
-              {errors.imageFiles && <p className='text-red-800 ml-5'>{errors.imageFiles.message}</p>}
+              {errors.imageFiles && <p className='text-red-800 ml-5 font-bold'>{errors.imageFiles.message}</p>}
               </div>
     </div>
   );

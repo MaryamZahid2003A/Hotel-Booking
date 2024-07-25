@@ -2,6 +2,7 @@ import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './hotel.css';
+import { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import Details from './details.tsx';
 import Facility from './Facility.tsx';
@@ -31,6 +32,7 @@ function AddHotel() {
   const { handleSubmit, formState: { errors } } = methods;
   const dispatch = useDispatch();
   const [addHotel] = useAdd_hotelMutation();
+  const [isLoading, setLoading] = useState(false);
 
   const onSubmit = handleSubmit(async (data: HotelFormData) => {
     const formData = new FormData();
@@ -67,7 +69,7 @@ function AddHotel() {
   return (
     <FormProvider {...methods}>
       <div className="hotel">
-        <form className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg pt-10" onSubmit={onSubmit}>
+        <form className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg pt-10" onSubmit={onSubmit} >
           <h1 className="text-black text-center bg-white text-3xl font-bold mt-6">
             Add Hotel
           </h1>
@@ -77,8 +79,8 @@ function AddHotel() {
           <Guest />
           <Image />
           <div className="flex justify-center mt-10">
-            <button type="submit" className="button">
-              Save
+            <button type="submit" className="button" disabled={isLoading} >
+              {isLoading? "Saving...": "Save"}
             </button>
           </div>
         </form>
