@@ -10,7 +10,7 @@ import SignIn from './SignIn';
 import Booking from './Booking';
 import { Manage } from './Hotel/Manage.tsx';
 import PrivateRoute from './privateRoute';
-
+import View from './viewHotel.js/View.js';
 function App() {
   return (
     <div className='main'>
@@ -24,6 +24,8 @@ function App() {
             <Route path='/' element={<PrivateRoute/>}>
                 <Route path="/Managehotel" element={<Manage />} />
                 <Route path="/booking" element={<Booking />} />
+                <Route path="/View" element={<View />} />
+
             </Route>
           </Routes>
 

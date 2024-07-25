@@ -55,6 +55,11 @@ export default function Layout() {
                         My Hotel
                       </button>
                   </Link>
+                  <Link to='/View'>
+                      <button className='w-24 h-10 mt-6 bg-yellow-400 font-bold text-black mr-14 rounded-sm hover:bg-yellow-600 hover:text-black transition ease-in-out delay-200 '>
+                        View
+                      </button>
+                  </Link>
               </div>
               <div>
                 <h1 className='text-2xl text-white mr-14 mt-1'>{userInfo.name}</h1>

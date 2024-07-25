@@ -68,6 +68,14 @@ const my_hotel = expressAsyncHandler(async (req, res) => {
             res.status(400).json({ message: 'Error in Hotel Creation' });
         }
     });
+
+
+  
 });
 
-export { my_hotel };
+const view_hotel=expressAsyncHandler(async(req,res)=>{
+    const view_hotel= await Hotel.find(req.userId)
+    res.status(200).json(view_hotel)
+})
+
+export { my_hotel,view_hotel };
