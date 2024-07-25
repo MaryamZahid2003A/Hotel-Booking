@@ -14,4 +14,4 @@ const HotelApiSlice=ApiSlice.injectEndpoints({
     })
 })
 
-export const {useAddHotelMutation}=HotelApiSlice;
+export const {useAdd_hotelMutation}=HotelApiSlice;

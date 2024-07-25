@@ -16,7 +16,7 @@ const UserSlice=createSlice({
         logout:(state,action)=>{
             state.userInfo=null;
             localStorage.removeItem('userInfo')
-            console.log('remove item sucsffuly')
+            console.log('remove item successfully')
         },
     }
 })

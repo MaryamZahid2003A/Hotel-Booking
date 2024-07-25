@@ -1,3 +1,4 @@
+import React from "react";
 import { useFormContext } from "react-hook-form";
 import { HotelFormData } from "./AddHotel.ts";
 
@@ -20,7 +21,8 @@ function Image(){
           accept="image/*"
           className="w-full text-gray-700 font-normal"
           {...register("imageFiles", {
-            validate: (imageFiles) => {
+            validate: (value) => {
+              const imageFiles = value as FileList;
               const totalLength = imageFiles.length
 
               if (totalLength === 0) {
