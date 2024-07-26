@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
 import Layout from './layout';
 import Header from './Header';
 import {Routes,Route} from 'react-router-dom'
@@ -10,7 +11,7 @@ import SignIn from './SignIn';
 import Booking from './Booking';
 import { Manage } from './Hotel/Manage.tsx';
 import PrivateRoute from './privateRoute';
-import View from './viewHotel.js/View.js';
+import ViewHotel from './viewHotel/View.tsx';
 function App() {
   return (
     <div className='main'>
@@ -24,7 +25,7 @@ function App() {
             <Route path='/' element={<PrivateRoute/>}>
                 <Route path="/Managehotel" element={<Manage />} />
                 <Route path="/booking" element={<Booking />} />
-                <Route path="/View" element={<View />} />
+                <Route path="/view/:id" element={<ViewHotel />} />
 
             </Route>
           </Routes>

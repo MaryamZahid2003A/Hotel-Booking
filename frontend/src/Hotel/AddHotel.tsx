@@ -14,6 +14,7 @@ import { setHotelCredentials } from '../store/slice/HotelSlice.js';
 import { useAdd_hotelMutation } from '../store/slice/HotelApiSlice.js';
 
 export type HotelFormData = {
+  userId:number,
   name: string;
   city: string;
   country: string;
@@ -55,9 +56,6 @@ function AddHotel() {
     });
 
     try {
-      // Log form data entries for debugging
-     
-      
       const res = await addHotel(formData).unwrap(); 
       dispatch(setHotelCredentials({ ...res }));
       toast.success('Hotel Added Successfully!');
@@ -85,6 +83,7 @@ function AddHotel() {
           </div>
         </form>
       </div>
+      <ToastContainer/>
     </FormProvider>
   );
 }

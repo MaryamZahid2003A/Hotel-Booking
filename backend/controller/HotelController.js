@@ -73,9 +73,20 @@ const my_hotel = expressAsyncHandler(async (req, res) => {
   
 });
 
-const view_hotel=expressAsyncHandler(async(req,res)=>{
-    const view_hotel= await Hotel.find(req.userId)
-    res.status(200).json(view_hotel)
-})
-
+const view_hotel = expressAsyncHandler(async (req, res) => {
+    const {id}=req.params
+    console.log(`router id${id}`)
+    try {
+        const hotel = await Hotel.find({ userId: id });
+        if (hotel) {
+            res.status(200).json(hotel);
+        } else {
+            res.status(404).json({ message: 'Hotel not found' });
+        }
+    } catch (error) {
+        console.error('Error fetching hotel:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+  });
+  
 export { my_hotel,view_hotel };
