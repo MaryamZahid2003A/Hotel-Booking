@@ -44,6 +44,8 @@ body {
   display: flex;
   flex-wrap: wrap; 
   justify-content: center; 
+  margin-top:2rem;
+  
 }
 
 .item-description {
@@ -56,9 +58,7 @@ body {
 
 .item-description-end {
   color: rgb(80, 75, 75);
-  margin-left: 0.7rem;
   margin-bottom: 1rem;
-  margin-left: 0.5rem;
 }
 .facility-item {
   background-color: #f3f4f6;
@@ -68,5 +68,46 @@ body {
   margin-right: 0.5rem; 
   margin-bottom: 0.5rem; 
 }
+.button-item {
+  background-color: #033346;
+  border: 1px solid #021e22;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem; 
+  color:white;
+  margin-bottom: 0.5rem; 
+  align-items:center;
+  margin-left:5rem;
+  margin-top:1rem;
+}
+.button-item:hover {
+  background-color: #08516d;
+  border: 1px solid #021e22;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem; 
+  color:white;
+  margin-bottom: 0.5rem; 
+  align-items:center;
+  margin-left:5rem;
+  margin-top:1rem;
+}
+.individualItem{
+  width:23rem;
+  height:18rem;
+  background-color:white;
+  margin-left:5rem;
+ display: flex;
+ flex-direction:column;
+ margin-bottom:1rem;
+}
 
 
+.indvidual{
+  width:23rem;
+  height:18rem;
+  background-color:white;
+  display: flex;
+ flex-direction:column;
+ margin-bottom: 1rem;
+}
