@@ -2,7 +2,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: auto; /* Allow scrolling */
+  overflow: auto; 
 }
 
 body {
@@ -15,5 +15,58 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: rgb(1, 7, 16); /* Text color */
+  color: rgb(1, 7, 16); 
 }
+
+.ViewHeading {
+  color: rgb(8, 47, 83);
+  font-size:1.4rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.component {
+  display: flex;
+  flex-direction: column; 
+  background-color: white;
+  border-radius: 1rem;
+  margin: 2rem;
+  text-align: center;
+  overflow: hidden;
+}
+.View_heading{
+  margin-top:0.6rem;
+  text-align:center;
+
+}
+
+.item {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+}
+
+.item-description {
+  color: rgb(94, 88, 88);
+  display:flex;
+ padding-left: 1rem;
+  margin-top: 1rem;
+  margin-right:1rem;
+}
+
+.item-description-end {
+  color: rgb(80, 75, 75);
+  margin-left: 0.7rem;
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
+}
+.facility-item {
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem; 
+  margin-bottom: 0.5rem; 
+}
+
+
