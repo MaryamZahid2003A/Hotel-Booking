@@ -56,6 +56,8 @@ function AddHotel() {
     });
 
     try {
+     
+      
       const res = await addHotel(formData).unwrap(); 
       dispatch(setHotelCredentials({ ...res }));
       toast.success('Hotel Added Successfully!');

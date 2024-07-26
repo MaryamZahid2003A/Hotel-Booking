@@ -12,6 +12,7 @@ import Booking from './Booking';
 import { Manage } from './Hotel/Manage.tsx';
 import PrivateRoute from './privateRoute';
 import ViewHotel from './viewHotel/View.tsx';
+import ReadMore from './viewHotel/ReadMore.js';
 function App() {
   return (
     <div className='main'>
@@ -26,6 +27,8 @@ function App() {
                 <Route path="/Managehotel" element={<Manage />} />
                 <Route path="/booking" element={<Booking />} />
                 <Route path="/view/:id" element={<ViewHotel />} />
+                <Route path="/view/:id/:id" element={<ReadMore />} />
+
 
             </Route>
           </Routes>
