@@ -32,6 +32,7 @@ export default function ViewHotel() {
                 {hotels.length > 0 ? (
                     hotels.map((hotel) => (
                         <div key={hotel.userId} className='individualItem'>
+                            <p className='text-black'>giving hotel id of each hotel{hotel._id}</p>
                             <div className='flex flex-shrink'>
                                     <img src='https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg' className='item-center' width='400' height='200' alt='Hotel'/>
                                         <div className='flex flex-col'>
@@ -64,8 +65,9 @@ export default function ViewHotel() {
                                         </div>
                                     </div>
                                 </div>
-                            
-                                <button  className='button-item'>Edit Detail</button>
+                           <Link to={`/api/hotel/view/${hotel._id}`}>
+                             <button  className='button-item'>Edit Detail</button>
+                           </Link>
                                 <button  className='delete-item'>Delete Item</button>     
                             
                             </div>
