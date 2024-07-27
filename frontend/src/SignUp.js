@@ -30,15 +30,15 @@ const onSubmit = async (data) => {
 
   return (
     <div className='flex justify-center items-center flex-col sm:ml-6 md:ml-20 mt-20'>
-      <form className='flex flex-col mt-10 mx-4 sm:mt-20 sm:mx-30 md:mx-40 lg:mx-72 h-96 w-96 bg-white rounded-lg' onSubmit={handleSubmit(onSubmit)}>
+      <form className='flex flex-col mt-10 mx-4 sm:mt-20 sm:mx-30 md:mx-40 lg:mx-72 h-96 w-96 bg-black rounded-lg border-b-2 border-b-white' onSubmit={handleSubmit(onSubmit)}>
       <input
           id='title'
           type='name'
           placeholder='Name'
-          className='border-b-2 w-72 ml-8 mr-8 py-1 px-3 border-slate-500 text-black mt-8'
+          className='border-b-2 w-72 ml-8 mr-8 py-1 px-3 border-slate-500 text-white mt-8 bg-black'
           {...register('name', { required: true })}
         />
-        {errors.name && <p className='text-red-800 ml-8'>This field is required</p>}
+        {errors.name && <p className='text-yellow-300 ml-8'>This field is required</p>}
         
        
        
@@ -46,16 +46,16 @@ const onSubmit = async (data) => {
           id='title'
           type='email'
           placeholder='Email'
-          className='border-b-2 w-72 ml-8 mr-8 py-1 px-3 border-slate-500 text-black mt-8'
+          className='border-b-2 w-72 ml-8 mr-8 py-1 px-3 border-slate-500 text-white mt-8 bg-black'
           {...register('email', { required: true })}
         />
-        {errors.email && <p className='text-red-800 ml-8'>This field is required</p>}
+        {errors.email && <p className='text-yellow-300 ml-8'>This field is required</p>}
 
         <input
           id='title'
           type='password'
           placeholder='Password'
-          className='border-b-2 w-72 ml-8 mr-8 py-1 px-3 border-slate-500 text-black mt-8'
+          className='border-b-2 w-72 ml-8 mr-8 py-1 px-3 border-slate-500 text-white mt-8 bg-black'
           {...register('password', {
             required: true,
             minLength: {
@@ -64,14 +64,14 @@ const onSubmit = async (data) => {
             }
           })}
         />
-        {errors.password && <p className='text-red-800 ml-8'>{errors.password.message}</p>}
+        {errors.password && <p className='text-yellow-300 ml-8'>{errors.password.message}</p>}
 
         <div className='w-full ml-16 mr-16 py-2 px-3 rounded mt-7 h-11 flex flex-col'>
           <button className='w-48 h-8 rounded-2xl bg-red-600 hover:bg-red-900 text-white mt-2'>Sign Up</button>
           <Link to="/login">
             <div className='flex flex-row mt-4'>
-              <h1 className='text-black'>Already Register?</h1>
-              <button className='ml-1 text-blue-900'>Sign In </button>
+              <h1 className='text-white'>Already Register?</h1>
+              <button className='ml-1 text-yellow-300'>Sign In </button>
             </div>
           </Link>
         </div>

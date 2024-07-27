@@ -24,6 +24,7 @@ export default function ViewHotel() {
         fetchHotel();
     }, [id]);
    
+   
     return (
         <div className="container">
             <h1 className='text-white text-3xl mt-20 text-center'>Hotel Details</h1>
@@ -31,37 +32,48 @@ export default function ViewHotel() {
                 {hotels.length > 0 ? (
                     hotels.map((hotel) => (
                         <div key={hotel.userId} className='individualItem'>
-                            <img src='https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg' className='   items-center' width='400' height='300' alt='Hotel'/>
-                            <div className='indvidual'>
-                                <h2 className='text-center text-2xl text-red-800 mt-5'>{hotel.name}</h2>
-                                {/* <p className='item-description'><strong className='text-1xl mr-10 '>Description:</strong>  {hotel.description.substring(0, 30)} .. .</p> */}
-
-                                <div className='flex justify-between'>
-                                    <p className='item-description ' ><strong>Price Per Night : </strong> <FaDollarSign style={{ color: 'gray' }} className='mt-1 pl-5' />    {hotel.pricePerNight}</p>
-                                    <strong className='item-description'>Rating : <FaStar className='text-yellow-400  mt-1 ml-4'/> {hotel.starRating}</strong>
-
-                                </div>
-                                <p className='item-description'><strong className=''>Location : </strong> <FaMapMarkerAlt style={{ color: 'red' }} className='mt-1 '/> {hotel.city}, {hotel.country}</p>
-
-                                <p className='item-description'><strong>Type:</strong> <p className='ml-10'>{hotel.type}</p></p>
-                                {/* <div className='item-description'>
-                                    <strong>Facilities:</strong>
-                                    <div className='facilities-list ml-10'>
-                                        {hotel.facilities.map((facility, index) => (
-                                            <span key={index} className='facility-item'>{facility}</span>
-                                        ))}
+                            <div className='flex flex-shrink'>
+                                    <img src='https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg' className='item-center' width='400' height='200' alt='Hotel'/>
+                                        <div className='flex flex-col'>
+                                        <h1 className='text-black text-2xl text-center font-bold mt-10'>Description</h1>
+                                        <p className='item-description'>{hotel.description.substring(0,300) } . . .</p>
                                     </div>
-                                </div> */}
-                                <p className='item-description'><FaUser style={{ color: 'blue' }} className='mt-1 mr-6'/>   {hotel.adultCount} Adults ,  {hotel.childCount} Children </p>
-                            <Link to={`/view/${id}/readmore`}>
-                                <button  className='button-item'>More Details</button>
-                                    
-                            </Link>
+                             </div>
+                        
+                            <div className='indvidual'>
+                                <h2 className='text-center text-3xl text-red-800 mt-5 font-bold'>{hotel.name}</h2>
+                                <div className='flex flex-col'>
+                                    <p className='item-description ' ><strong>Price Per Night : </strong> <FaDollarSign style={{ color: 'gray' }} className='mt-1 pl-5' />    {hotel.pricePerNight}</p>
+                                    <strong className='item-description'>Rating : <FaStar className='text-yellow-400  ml-4'/> {hotel.starRating}</strong>
+                                </div>
+                                <div className='flex flex-row'>
+                                    <section>
+                                        <p className='item-description'><strong className=''>Location : </strong> <FaMapMarkerAlt style={{ color: 'red' }} /> {hotel.city} , {hotel.country}</p>
+                                        <p className='item-description'><strong>Type : </strong> <p className='ml-3' >{hotel.type}</p></p>
+                                         <p className='item-description'><FaUser style={{ color: 'blue' }} className=' mr-6'/>   {hotel.adultCount} Adults ,  {hotel.childCount} Children </p>
+                                   
+                                    </section>
+                                    <div className='item-description'>
+                                        <div className='facilities-list'>
+                                        
+                                        <strong className='text-black ml-10'>Facilities:</strong>
+                                            <br />
+                                            {hotel.facilities.map((facility, index) => (
+                                                <span key={index} className='facility-item'>{facility}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <button  className='button-item'>Edit Detail</button>
+                                <button  className='delete-item'>Delete Item</button>     
+                            
                             </div>
+                           
                         </div>
                     ))
                 ) : (
-                    <p className='text-white'>No hotel details available</p>
+                    <p className='text-black text-3xl mt-10'>No hotel details available</p>
                 )}
                 {error && <p className='text-red-500'>{error}</p>}
             </div>

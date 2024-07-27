@@ -6,7 +6,7 @@ html, body {
 }
 
 body {
-  background-image: url('https://images.unsplash.com/photo-1517840901100-8179e982acb7?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWx8ZW58MHx8MHx8fDA%3D');
+  background-color: aliceblue;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -20,7 +20,7 @@ body {
 
 .ViewHeading {
   color: rgb(8, 47, 83);
-  font-size:1.4rem;
+  font-size: 1.4rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
@@ -34,51 +34,60 @@ body {
   text-align: center;
   overflow: hidden;
 }
-.View_heading{
-  margin-top:0.6rem;
-  text-align:center;
 
+.View_heading {
+  margin-top: 0.6rem;
+  text-align: center;
 }
 
 .item {
   display: flex;
-  flex-wrap: wrap; 
   justify-content: center; 
-  margin-top:2rem;
-  
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .item-description {
-  color: rgb(94, 88, 88);
-  display:flex;
- padding-left: 1rem;
-  margin-top: 1rem;
-  margin-right:1rem;
+  color: black;
+  margin-left:4rem;
+  margin-bottom: 1rem;;
+  display: flex;
+  align-items: center; /* Vertically align items */
 }
 
 .item-description-end {
-  color: rgb(80, 75, 75);
+  color: black;
   margin-bottom: 1rem;
 }
+
+.facilities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 1rem;
+}
+
 .facility-item {
-  background-color: #f3f4f6;
+  background-color: #c0c2c7;
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   margin-right: 0.5rem; 
-  margin-bottom: 0.5rem; 
+  margin-bottom: 0.2rem; 
+  margin-left: 3rem;
 }
+
 .button-item {
   background-color: #033346;
   border: 1px solid #021e22;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   margin-right: 0.5rem; 
-  color:white;
+  color: white;
   margin-bottom: 0.5rem; 
-  align-items:center;
-  margin-left:5rem;
-  margin-top:1rem;
+  align-items: center;
+ margin-left: 3rem;
+  margin-top: 1rem;
 }
 .button-item:hover {
   background-color: #08516d;
@@ -86,28 +95,57 @@ body {
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   margin-right: 0.5rem; 
-  color:white;
+  color: white;
   margin-bottom: 0.5rem; 
-  align-items:center;
-  margin-left:5rem;
-  margin-top:1rem;
+  align-items: center;
+  margin-left: 3rem;
+  margin-top: 1rem;
 }
-.individualItem{
-  width:23rem;
-  height:18rem;
-  background-color:white;
-  margin-left:5rem;
- display: flex;
- flex-direction:column;
- margin-bottom:1rem;
+
+.delete-item {
+  background-color: red;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem; 
+  color: white;
+  margin-bottom: 0.5rem; 
+  align-items: center;
+  margin-top: 1rem;
+}
+.delete-item:hover {
+  background-color: rgb(100, 18, 18);
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem; 
+  color: white;
+  margin-bottom: 0.5rem; 
+  align-items: center;
+  margin-top: 1rem;
 }
 
 
-.indvidual{
-  width:23rem;
-  height:18rem;
-  background-color:white;
+.individualItem {
+  border: 0.3rem solid gray;
+  width: 100%;
+  max-width: 50rem; 
+  height: auto; 
+  background-color: white;
+  margin-left: 3rem;
   display: flex;
- flex-direction:column;
- margin-bottom: 1rem;
+  flex-direction: column; /* Changed to column to align descriptions vertically */
+  margin-bottom: 1rem;
+  margin-top:2rem;
+}
+
+.individual {
+  width: 100%; 
+  max-width: 23rem; 
+  height: auto; 
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  margin-left: -1rem;
 }

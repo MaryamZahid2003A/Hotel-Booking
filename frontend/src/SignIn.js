@@ -28,21 +28,21 @@ export default function SignIn() {
 
   return (
     <div className='flex justify-center items-center flex-col sm:ml-6 md:ml-20 mt-20'>
-      <form className='flex flex-col mt-10 mx-4 sm:mt-20 sm:mx-30 md:mx-40 lg:mx-72 h-96 w-96 bg-white rounded-lg' onSubmit={handleSubmit(handleLogin)}>
+      <form className='  flex flex-col mt-10 mx-4 sm:mt-20 sm:mx-30 md:mx-40 lg:mx-72 h-96 w-96 bg-black rounded-lg border-b-2 border-b-gray-800' onSubmit={handleSubmit(handleLogin)}>
         <input
           id='email'
           type='email'
           placeholder='Email'
-          className='border-b-2 w-72 ml-8 mr-8 py-1 px-3 border-slate-500 text-black mt-14'
+          className='border-b-2 w-72 ml-8 mr-8 py-1 px-3 border-slate-500 text-white mt-14 bg-black'
           {...register('email', { required: true })}
         />
-        {errors.email && <p className='text-red-800 ml-8'>This field is required</p>}
+        {errors.email && <p className='text-yellow-300 ml-8'>This field is required</p>}
 
         <input
           id='password'
           type='password'
           placeholder='Password'
-          className='border-b-2 w-72 ml-8 mr-8 py-1 px-3 border-slate-500 text-black mt-14'
+          className='border-b-2 w-72 ml-8 mr-8 py-1 px-3 border-slate-500 text-white mt-14 bg-black'
           {...register('password', {
             required: true,
             minLength: {
@@ -51,14 +51,14 @@ export default function SignIn() {
             }
           })}
         />
-        {errors.password && <p className='text-red-800 ml-8'>{errors.password.message}</p>}
+        {errors.password && <p className='text-yellow-300 ml-8'>{errors.password.message}</p>}
 
         <div className='w-full ml-16 mr-16 py-2 px-3 rounded mt-10 h-11 flex flex-col'>
           <button className='w-48 h-8 rounded-2xl bg-red-600 hover:bg-red-900 text-white mt-2' type="submit">Sign In</button>
           <Link to="/signup">
             <div className='flex flex-row mt-6'>
-              <h1 className='text-black'>New Registration?</h1>
-              <button className='ml-1 text-blue-900'>Sign Up</button>
+              <h1 className='text-white'>New Registration?</h1>
+              <button className='ml-1 text-yellow-300'>Sign Up</button>
             </div>
           </Link>
         </div>
