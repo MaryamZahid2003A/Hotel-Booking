@@ -13,8 +13,8 @@ const HotelApiSlice=ApiSlice.injectEndpoints({
         }),
         update_hotel:builder.mutation({
             query : (data)=>({
-                method:'POST',
-                url:`${baseURL}/view/:hotelId`,
+                method:'PUT',
+                url:`${baseURL}/update/:id`,
                 body:data
 
             })

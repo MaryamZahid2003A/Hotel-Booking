@@ -18,7 +18,6 @@ import { HotelFormData } from '../Hotel/AddHotel';
 function ReadMore() {
   const [error, setError] = useState<string | null>(null);
   const { id } = useParams<{ id: string }>();
-  const { hotelId } = useParams<{ hotelId: string }>();
 
   const methods = useForm<HotelFormData>();
   const { handleSubmit, reset, formState: { errors } } = methods;
@@ -27,19 +26,19 @@ function ReadMore() {
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchHotel = async () => {
+    const fetchHotelData = async () => {
       try {
-        const response = await axios.get(`/api/hotel/view/${hotelId}`);
-       const hotelData=response.data
-       console.log('Fetched hotel data:', hotelData);
+        const response = await axios.get(`/api/hotel/view/${id}`);
+        const hotelData = response.data;
         reset(hotelData); 
       } catch (error) {
         setError('Error fetching hotel data');
         console.error('Error fetching hotel data:', error);
       }
     };
-    fetchHotel();
-  }, [id, hotelId, reset]);
+
+    fetchHotelData();
+  }, [id, reset]);
 
   const onSubmit = handleSubmit(async (data: HotelFormData) => {
     const formData = new FormData();
@@ -48,28 +47,31 @@ function ReadMore() {
     formData.append('country', data.country);
     formData.append('description', data.description);
     formData.append('type', data.type);
-    formData.append("pricePerNight", data.pricePerNight.toString());
-    formData.append("starRating", data.starRating.toString());
-    formData.append("adultCount", data.adultCount.toString());
-    formData.append("childCount", data.childCount.toString());
-
+    formData.append('pricePerNight', data.pricePerNight.toString());
+    formData.append('starRating', data.starRating.toString());
+    formData.append('adultCount', data.adultCount.toString());
+    formData.append('childCount', data.childCount.toString());
+  
     data.facilities.forEach((facility) => {
       formData.append('facilities', facility);
     });
-
+  
     Array.from(data.imageFiles).forEach((file) => {
       formData.append('imageFiles', file);
     });
-
+  
     try {
-      const res = await updateHotel(formData).unwrap();
-      dispatch(setHotelCredentials({ ...res }));
+      setLoading(true);
+      const res = await updateHotel({ hotelId: id, formData }).unwrap();
+      dispatch(setHotelCredentials({ ...res.data }));
       toast.success('Hotel Updated Successfully!');
     } catch (error) {
-      console.error(error?.data?.message || error.message);
+      console.error(error?.response?.data?.message || error.message);
+      toast.error('Failed to update hotel.');
+    } finally {
+      setLoading(false);
     }
   });
-
   return (
     <FormProvider {...methods}>
       <div className="hotel">

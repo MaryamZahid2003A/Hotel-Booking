@@ -27,7 +27,7 @@ function App() {
                 <Route path="/Managehotel" element={<Manage />} />
                 <Route path="/booking" element={<Booking />} />
                 <Route path="/view/:id" element={<ViewHotel />} />
-                <Route path="/view/:hotelId" element={<ReadMore />} />
+                <Route path="/update/:id" element={<ReadMore />} />
 
 
             </Route>

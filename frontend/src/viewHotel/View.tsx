@@ -65,7 +65,8 @@ export default function ViewHotel() {
                                         </div>
                                     </div>
                                 </div>
-                           <Link to={`/api/hotel/view/${hotel._id}`}>
+                           <Link to={`/update/${hotel._id}`}>
+                         <p className='text-black'>hotel id{hotel._id}</p>
                              <button  className='button-item'>Edit Detail</button>
                            </Link>
                                 <button  className='delete-item'>Delete Item</button>     

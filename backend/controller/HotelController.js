@@ -93,12 +93,11 @@ const view_hotel = expressAsyncHandler(async (req, res) => {
  
   const edit_hotel = expressAsyncHandler(async (req, res) => {
     const { hotelId } = req.params;
-    console.log(`Hotel ID: ${hotelId}`); // Corrected log statement
+    console.log(`Hotel ID: ${hotelId}`);
   
     try {
-      // Fetch the hotel using hotelId
-      const hotel = await Hotel.findById(hotelId);
-      
+      const hotel = await Hotel.findOne(hotelId); // Corrected this line to use findById
+  
       if (!hotel) {
         return res.status(404).json({ message: 'Hotel not found' });
       }
@@ -126,6 +125,7 @@ const view_hotel = expressAsyncHandler(async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
   });
+  
   
   
 export { my_hotel,view_hotel,edit_hotel};
