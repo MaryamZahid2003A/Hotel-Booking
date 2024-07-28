@@ -88,6 +88,20 @@ const view_hotel = expressAsyncHandler(async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
   });
+
+  const view_specific_hotel = expressAsyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const { hotelId } = req.params;
+
+    console.log(`router id:  by view${id}`);
+    try {
+      const hotels = await Hotel.find({ _id: hotelId });
+      res.status(200).json(hotels)
+    } catch (error) {
+      console.error('Error fetching hotel:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
   
 
  
@@ -96,7 +110,7 @@ const view_hotel = expressAsyncHandler(async (req, res) => {
     console.log(`Hotel ID: ${hotelId}`);
   
     try {
-      const hotel = await Hotel.findOne(hotelId); // Corrected this line to use findById
+      const hotel = await Hotel.findById(hotelId); // Corrected this line to use findById
   
       if (!hotel) {
         return res.status(404).json({ message: 'Hotel not found' });
@@ -128,4 +142,4 @@ const view_hotel = expressAsyncHandler(async (req, res) => {
   
   
   
-export { my_hotel,view_hotel,edit_hotel};
+export { my_hotel,view_hotel,edit_hotel,view_specific_hotel };
