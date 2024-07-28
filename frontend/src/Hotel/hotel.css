@@ -99,6 +99,25 @@
     text-align:center;
 }
 
+
+  
+  .delete-button {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+   .delete-button {
+    display: block;
+  }
+  
+
 @media (max-width: 768px) {
     .hotel {
         min-width: 30rem; 

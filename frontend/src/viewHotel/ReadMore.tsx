@@ -47,7 +47,7 @@ function ReadMore() {
           adultCount: hotelData.adultCount,
           childCount: hotelData.childCount,
           facilities: hotelData.facilities || [],
-          imageFiles: hotelData.imageFiles // Assuming images are not part of initial form data
+          imageurls:hotelData.imageurls
         };
         console.log('Formatted Data for Reset:', formattedData); // Log formatted data
 
@@ -83,6 +83,7 @@ function ReadMore() {
 
     try {
       setLoading(true);
+      console.log(formData)
       const res = await axios.put(`/api/hotel/check/${id}/${hotelId}`,formData,{
         headers: {
           'Content-Type': 'multipart/form-data'
