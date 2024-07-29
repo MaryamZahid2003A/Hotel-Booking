@@ -12,7 +12,6 @@ import Guest from '../Hotel/Guest.tsx';
 import Image from '../Hotel/Image.tsx';
 import { useDispatch } from 'react-redux';
 import { setHotelCredentials } from '../store/slice/HotelSlice.js';
-import { useUpdate_hotelMutation } from '../store/slice/HotelApiSlice.js';
 import { HotelFormData } from '../Hotel/AddHotel';
 
 function ReadMore() {
@@ -21,15 +20,14 @@ function ReadMore() {
   const methods = useForm<HotelFormData>();
   const { handleSubmit, reset, formState: { errors } } = methods;
   const dispatch = useDispatch();
-  const [updateHotel] = useUpdate_hotelMutation();
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchHotelData = async () => {
       try {
         const response = await axios.get(`/api/hotel/check/${id}/${hotelId}`);
-        const hotelData = response.data[0]; 
-        console.log('Fetched Hotel Data:', hotelData); // Log entire response
+        const hotelData = response.data[0];
+        console.log('Fetched Hotel Data:', hotelData);
 
         if (!hotelData) {
           setError('Hotel data not found');
@@ -46,10 +44,10 @@ function ReadMore() {
           starRating: hotelData.starRating,
           adultCount: hotelData.adultCount,
           childCount: hotelData.childCount,
-          facilities: hotelData.facilities || [],
-          imageurls:hotelData.imageurls
+          facilities: hotelData.facilities,
+          imageurls: hotelData.imageurls
         };
-        console.log('Formatted Data for Reset:', formattedData); // Log formatted data
+        console.log('Formatted Data for Reset:', formattedData);
 
         reset(formattedData);
       } catch (error) {
@@ -72,34 +70,28 @@ function ReadMore() {
     formData.append('starRating', data.starRating.toString());
     formData.append('adultCount', data.adultCount.toString());
     formData.append('childCount', data.childCount.toString());
-  
-    data.facilities.forEach((facility) => {
+    const flattenedFacilities = data.facilities.flat();
+    flattenedFacilities.forEach((facility) => {
       formData.append('facilities', facility);
     });
-  
-    Array.from(data.imageFiles).forEach((file) => {
-      formData.append('imageFiles', file);
-    });
+
+    if (data.imageFiles && data.imageFiles.length > 0) {
+      Array.from(data.imageFiles).forEach((file) => {
+        formData.append('imageFiles', file);
+      });
+    }
 
     try {
       setLoading(true);
-      console.log(formData)
-      const res = await axios.put(`/api/hotel/check/${id}/${hotelId}`,formData,{
+      const res = await axios.put(`/api/hotel/check/${id}/${hotelId}`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'application/json'
         }
-      }); 
-      const hello =res;
-      console.log(hello)
-    
+      });
+      console.log('Response from API:', res);
       toast.success('Hotel Updated Successfully!');
     } catch (error) {
-        // Detailed error logging
-        console.error('Error response:', error.response);
-        console.error('Error message:', error.message);
-        console.error('Error config:', error.config);
-        console.error('Error request:', error.request);
-      console.error(error?.response?.data?.message || error.message);
+      
       toast.error('Failed to update hotel.');
     } finally {
       setLoading(false);

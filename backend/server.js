@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import db from './config/db.js';
 import userRouter from './routers/UserRouters.js';
 import hotelRouter from './routers/HotelRouters.js';
+import SearchRouter from './routers/SearchRouter.js';
 import { v2 as cloudinary } from 'cloudinary';
 
 dotenv.config();
@@ -26,6 +27,8 @@ app.use(cookieParser());
 app.get('/', (req, res) => res.send("server is ready"));
 app.use('/api/hotel', hotelRouter);
 app.use('/api/users', userRouter);
+app.use('/api/search', SearchRouter);
+
 
 app.listen(port, () => {
     console.log(`Server started at port ${port}`);

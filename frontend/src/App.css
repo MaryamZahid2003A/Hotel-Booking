@@ -45,14 +45,19 @@ body {
   justify-content: center; 
   flex-wrap: wrap;
   margin-top: 2rem;
+  margin-left: 2rem;
+  margin-right:2rem;
 }
 
 .item-description {
-  color: black;
-  margin-left:4rem;
+  border:1px solid rgb(181, 180, 180);
+  color: rgb(113, 110, 110);
+  margin-top:0.6rem;
+  margin-left:1rem;
   margin-bottom: 1rem;;
   display: flex;
-  align-items: center; /* Vertically align items */
+  align-items: center; 
+  padding:1rem;
 }
 
 .item-description-end {
@@ -62,23 +67,18 @@ body {
 
 .facilities-list {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding-left: 1rem;
+  flex-direction:column;
+ 
 }
 
 .facility-item {
-  background-color: #c0c2c7;
-  border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  margin-right: 0.5rem; 
+  margin-right: 0.3rem; 
   margin-bottom: 0.2rem; 
-  margin-left: 3rem;
 }
 
 .button-item {
-  background-color: #033346;
+  background-color: #010e14;
   border: 1px solid #021e22;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
@@ -90,7 +90,7 @@ body {
   margin-top: 1rem;
 }
 .button-item:hover {
-  background-color: #08516d;
+  background-color: #113442;
   border: 1px solid #021e22;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
@@ -103,7 +103,7 @@ body {
 }
 
 .delete-item {
-  background-color: red;
+  background-color: rgb(223, 114, 114);
   border: 1px solid #e0e0e0;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
@@ -127,25 +127,27 @@ body {
 
 
 .individualItem {
-  border: 0.3rem solid gray;
-  width: 100%;
-  max-width: 50rem; 
+  display:flex;
+  flex-wrap:nowrap;
+  border: 1px solid rgb(177, 178, 182);
+  width: auto; 
   height: auto; 
-  background-color: white;
-  margin-left: 3rem;
+  background-color: aliceblue;
   display: flex;
-  flex-direction: column; /* Changed to column to align descriptions vertically */
+  flex-direction: column; 
   margin-bottom: 1rem;
   margin-top:2rem;
+  margin-left: 2rem;
+  margin-right:2rem;
+  padding:2rem;
 }
 
 .individual {
   width: 100%; 
   max-width: 23rem; 
   height: auto; 
-  background-color: white;
+  background-color: rgb(204, 200, 200);
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
-  margin-left: -1rem;
 }

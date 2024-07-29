@@ -53,12 +53,12 @@ export default function Layout() {
                   </Link>
                   <Link to='/ManageHotel'>
                       <button className='w-24 h-10 mt-6 bg-yellow-400 font-bold text-black mr-14 rounded-sm hover:bg-yellow-600 hover:text-black transition ease-in-out delay-200 '>
-                        My Hotel
+                        Add Hotel
                       </button>
                   </Link>
                   <Link to={`/view/${userInfo._id}`}>
                       <button className='w-24 h-10 mt-6 bg-yellow-400 font-bold text-black mr-14 rounded-sm hover:bg-yellow-600 hover:text-black transition ease-in-out delay-200 '>
-                        View
+                        My Hotels
                       </button>
                   </Link>
               </div>
