@@ -4,8 +4,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 import '../App.css';
 import DatePicker from 'react-datepicker';
 import { MdTravelExplore } from "react-icons/md";
-import Search from "./Search.tsx";
-import {Link, useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { useQuery } from "react-query";
+
 export type SearchHotel = {
   destination: string;
   checkIn: Date;
@@ -23,28 +25,87 @@ export type SearchHotel = {
   }
 };
 
+export type SearchParams = {
+  destination?: string;
+  checkIn?:string;
+  checkOut?:string;
+  adultCount?:string;
+  childCount?:string;
+  page:string
+
+};
+const SearchParam=(async(search:SearchParams)=>{
+  try{
+    const param=new URLSearchParams();
+    param.append('destination',search.destination || '')
+    param.append('checkIn',search.checkIn || '')
+    param.append('checkOut',search.checkOut || '')
+    param.append('adultCount',search.adultCount || '')
+    param.append('childCount',search.childCount || '')
+  
+    const SearchPage= await axios.get(`/api/search/Searches?${param}`)
+    return SearchPage.data;
+    console.log(`hello ${SearchPage}`)
+  }
+ catch(error){
+  console.log('Error in fetching Searches')
+ }
+})
 export default function SearchBar() {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+  const [page,setPage]=useState<number>(1);
   const [destination, setDestination] = useState<string>('');
   const [checkIn, setCheckIn] = useState<Date>(new Date());
   const [checkOut, setCheckOut] = useState<Date>(new Date());
   const [adultCount, setAdultCount] = useState<number>(1);
   const [childCount, setChildCount] = useState<number>(0);
-
+  
+  // saveHotel
   const SaveHotel = (destination: string, checkIn: Date, checkOut: Date, adultCount: number, childCount: number) => {
     setDestination(destination);
     setCheckIn(checkIn);
     setCheckOut(checkOut);
     setAdultCount(adultCount);
     setChildCount(childCount);
-    
-    
-    navigate('/search');
   };
+
+  const search={
+      destination:destination,
+      checkIn:checkIn.toISOString(),
+      checkOut:checkOut.toISOString(),
+      adultCount:checkOut.toString(),
+      childCount:checkOut.toString(),
+      page:page.toString()
+  }
+
+  const { data, error, isLoading, refetch } = useQuery(
+    ['hotelled', search],
+    () => SearchParam(search),
+    { enabled: false }
+  );
+
+  
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
+    const hotelData: SearchHotel = {
+      destination,
+      checkIn,
+      checkOut,
+      adultCount,
+      childCount,
+      hotelId: '',
+      SaveHotel: {
+        destination,
+        checkIn,
+        checkOut,
+        adultCount,
+        childCount,
+        hotelId: ''
+      }
+    };
     SaveHotel(destination, checkIn, checkOut, adultCount, childCount);
+   refetch();
   };
 
   const minDate = new Date();
@@ -91,7 +152,7 @@ export default function SearchBar() {
             </label>
           </div>
           <div className="checkin">
-           <strong className="text-center">CheckIn: </strong>
+            <strong className="text-center">CheckIn: </strong>
             <DatePicker
               selected={checkIn}
               onChange={(date) => setCheckIn(date as Date)}
@@ -105,7 +166,7 @@ export default function SearchBar() {
             />
           </div>
           <div className="checkout">
-         <strong className="text-center"> CheckOut: </strong> 
+            <strong className="text-center"> CheckOut: </strong> 
             <DatePicker
               selected={checkOut}
               onChange={(date) => setCheckOut(date as Date)}
@@ -115,15 +176,21 @@ export default function SearchBar() {
               minDate={checkIn}
               maxDate={maxDate}
               placeholderText="Check Out Date"
-              className="w-64 text-center "
+              className="w-64 text-center"
               wrapperClassName="min-w-full"
             />
           </div>
           <div className="button-search">
-                 <button type="submit" className="Search-button">Search </button>
-            <button type="submit" className="clear-button">Clear</button>
+            <button type="submit" className="Search-button">Search </button>
+            <button
+              type="button"
+              className="clear-button"
+             
+            >
+              Clear
+            </button>
           </div>
-
+          {data && <div>Search Results: {JSON.stringify(data)}</div>}
         </div>
       </form>
     </div>
