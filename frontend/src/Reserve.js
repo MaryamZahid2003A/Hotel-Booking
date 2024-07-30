@@ -1,9 +1,9 @@
 import React from 'react';
-import Search from './SearchHotel/Search.tsx';
+import SearchBar from './SearchHotel/SearchBar.tsx';
 export default function Reserve() {
   return (
     <div>
-      <Search/>
+      <SearchBar/>
     </div>
   )
 }

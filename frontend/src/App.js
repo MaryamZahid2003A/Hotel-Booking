@@ -13,6 +13,7 @@ import { Manage } from './Hotel/Manage.tsx';
 import PrivateRoute from './privateRoute';
 import ViewHotel from './viewHotel/View.tsx';
 import ReadMore from './viewHotel/ReadMore.tsx';
+import Search from './SearchHotel/Search.tsx';
 function App() {
   return (
     <div className='main'>
@@ -31,6 +32,8 @@ function App() {
 
 
             </Route>
+            <Route path="/search" element={<Search />} />
+
           </Routes>
 
         </div>
