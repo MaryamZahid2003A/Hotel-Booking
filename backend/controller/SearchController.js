@@ -1,9 +1,7 @@
 import expressAsyncHandler from "express-async-handler";
-import { Request, Response } from "express";
 import Hotel from "../models/HotelModel.js";
-import { HotelSearch } from './Type.tsx';
 
-const SearchPage = expressAsyncHandler(async (req: Request, res: Response) => {
+const SearchPage = expressAsyncHandler(async (req, res) => {
     try {
         const pageSize = 5;
         const pageNo = parseInt(req.query.page ? req.query.page.toString() : '1');
@@ -12,7 +10,7 @@ const SearchPage = expressAsyncHandler(async (req: Request, res: Response) => {
         const hotels = await Hotel.find().skip(skip).limit(pageSize); 
         const total = await Hotel.countDocuments();
         
-        const response: HotelSearch = {
+        const response= {
             data: hotels,
             pagination: {
                 total,
