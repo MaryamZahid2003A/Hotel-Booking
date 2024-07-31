@@ -27,40 +27,38 @@ export type SearchHotel = {
 
 export type SearchParams = {
   destination?: string;
-  checkIn?:string;
-  checkOut?:string;
-  adultCount?:string;
-  childCount?:string;
-  page:string
-
+  checkIn?: string;
+  checkOut?: string;
+  adultCount?: string;
+  childCount?: string;
+  page: string;
 };
-const SearchParam=(async(search:SearchParams)=>{
-  try{
-    const param=new URLSearchParams();
-    param.append('destination',search.destination || '')
-    param.append('checkIn',search.checkIn || '')
-    param.append('checkOut',search.checkOut || '')
-    param.append('adultCount',search.adultCount || '')
-    param.append('childCount',search.childCount || '')
-  
-    const SearchPage= await axios.get(`/api/search/Searches?${param}`)
+
+const SearchParam = async (search: SearchParams) => {
+  try {
+    const param = new URLSearchParams();
+    param.append('destination', search.destination || '');
+    param.append('checkIn', search.checkIn || '');
+    param.append('checkOut', search.checkOut || '');
+    param.append('adultCount', search.adultCount || '');
+    param.append('childCount', search.childCount || '');
+
+    const SearchPage = await axios.get(`/api/search/Searches?${param}`);
     return SearchPage.data;
-    console.log(`hello ${SearchPage}`)
+  } catch (error) {
+    console.log('Error in fetching Searches');
   }
- catch(error){
-  console.log('Error in fetching Searches')
- }
-})
+};
+
 export default function SearchBar() {
   const navigate = useNavigate();
-  const [page,setPage]=useState<number>(1);
+  const [page, setPage] = useState<number>(1);
   const [destination, setDestination] = useState<string>('');
   const [checkIn, setCheckIn] = useState<Date>(new Date());
   const [checkOut, setCheckOut] = useState<Date>(new Date());
   const [adultCount, setAdultCount] = useState<number>(1);
   const [childCount, setChildCount] = useState<number>(0);
-  
-  // saveHotel
+
   const SaveHotel = (destination: string, checkIn: Date, checkOut: Date, adultCount: number, childCount: number) => {
     setDestination(destination);
     setCheckIn(checkIn);
@@ -68,15 +66,15 @@ export default function SearchBar() {
     setAdultCount(adultCount);
     setChildCount(childCount);
   };
-
-  const search={
-      destination:destination,
-      checkIn:checkIn.toISOString(),
-      checkOut:checkOut.toISOString(),
-      adultCount:checkOut.toString(),
-      childCount:checkOut.toString(),
-      page:page.toString()
-  }
+//convert to string
+  const search = {
+    destination: destination,
+    checkIn: checkIn.toISOString(),
+    checkOut: checkOut.toISOString(),
+    adultCount: adultCount.toString(),
+    childCount: childCount.toString(),
+    page: page.toString()
+  };
 
   const { data, error, isLoading, refetch } = useQuery(
     ['hotelled', search],
@@ -84,29 +82,15 @@ export default function SearchBar() {
     { enabled: false }
   );
 
-  
-
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    const hotelData: SearchHotel = {
-      destination,
-      checkIn,
-      checkOut,
-      adultCount,
-      childCount,
-      hotelId: '',
-      SaveHotel: {
-        destination,
-        checkIn,
-        checkOut,
-        adultCount,
-        childCount,
-        hotelId: ''
-      }
-    };
     SaveHotel(destination, checkIn, checkOut, adultCount, childCount);
-   refetch();
+    refetch();
   };
+
+  const refresh=(data:SearchHotel)=>{
+    
+  }
 
   const minDate = new Date();
   const maxDate = new Date();
@@ -166,7 +150,7 @@ export default function SearchBar() {
             />
           </div>
           <div className="checkout">
-            <strong className="text-center"> CheckOut: </strong> 
+            <strong className="text-center"> CheckOut: </strong>
             <DatePicker
               selected={checkOut}
               onChange={(date) => setCheckOut(date as Date)}
@@ -185,12 +169,12 @@ export default function SearchBar() {
             <button
               type="button"
               className="clear-button"
-             
             >
+    
               Clear
             </button>
           </div>
-          {data && <div>Search Results: {JSON.stringify(data)}</div>}
+          
         </div>
       </form>
     </div>
