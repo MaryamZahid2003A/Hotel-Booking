@@ -1,5 +1,5 @@
 import React, { FormEvent } from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import 'react-datepicker/dist/react-datepicker.css';
 import '../App.css';
 import DatePicker from 'react-datepicker';
@@ -7,6 +7,9 @@ import { MdTravelExplore } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { useQuery } from "react-query";
+import { SearchPage } from "../../../backend/controller/SearchController";
+import Search from "./Search.tsx";
+import Hotel from "../../../backend/models/HotelModel";
 
 export type SearchHotel = {
   destination: string;
@@ -88,9 +91,9 @@ export default function SearchBar() {
     refetch();
   };
 
-  const refresh=(data:SearchHotel)=>{
-    
-  }
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   const minDate = new Date();
   const maxDate = new Date();
@@ -177,6 +180,34 @@ export default function SearchBar() {
           
         </div>
       </form>
+
+      {/* Showing Filter and Search Results */}
+      <div className="ShowingFilter">
+        <div className="filter ">
+            <div className="space-y-5">
+              <h1 className="text-1xl ">Filter By : </h1>
+            </div>
+        </div>
+        <div className="HotelsBar">
+          <div className="flex flex-col gap-5 ">
+                <strong className="text-2xl ml-10 ">
+                    {data?.pagination.total} Hotels Found   
+              </strong>
+            </div>
+            <div>
+              {
+                data?.data.map((hotel)=>(
+                    <Search hotel={hotel}/>
+                ))
+              }
+            </div>
+          
+          </div>
+       
+          
+      </div>
+     
     </div>
   );
 }
+ 
