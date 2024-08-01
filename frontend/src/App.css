@@ -258,10 +258,25 @@ body {
   border-radius:5px;
   margin-left: 1rem;;
   margin-top:2rem;
-  height:auto;
   margin-left:1rem;
   font-weight:bold;
 
+}
+.specificPage{
+  background: gray;
+  color:black;
+  display:flex;
+  flex-direction:row;
+  padding:0.5rem;
+  padding-left:0.7rem;
+  padding-right:0.7rem;
+  border:1px solid rgb(102, 96, 96);
+  cursor:pointer;
+  margin-bottom: 10rem;;
+}
+.specificPage:hover,.specificPage:focus{
+  background: rgb(197, 194, 194);
+  
 }
 .HotelsBar{
 
@@ -271,18 +286,20 @@ body {
 .SearchItemGrid{
   display:grid;
   grid-template-columns:1fr 2fr;
-  border:1px solid rgb(197, 192, 192);
+  border:1px solid rgb(222, 217, 217);
   gap:4;
   margin-top: 2rem;
   margin-left:3rem;
   margin-right:5rem;
+  padding: 0.7rem;;
 }
 .facility{
-  background-color: gray;
-  color:white;
+  background-color: rgb(175, 171, 171);
+  color:black;
   padding:0.5rem;
   border-radius:2px;
   margin-left:0.4rem;
+  font-weight:bold;
   margin-bottom: 3rem;
 }
 .Booking-button{

@@ -10,6 +10,7 @@ import { useQuery } from "react-query";
 import { SearchPage } from "../../../backend/controller/SearchController";
 import Search from "./Search.tsx";
 import Hotel from "../../../backend/models/HotelModel";
+import Pagination from "../viewHotel/pagination.tsx";
 
 export type SearchHotel = {
   destination: string;
@@ -34,6 +35,10 @@ export type SearchParams = {
   checkOut?: string;
   adultCount?: string;
   childCount?: string;
+  starRating?: string[];
+  Types?: string[];
+  facilities?: string[];
+  sortOption?:string;
   page: string;
 };
 
@@ -45,6 +50,22 @@ const SearchParam = async (search: SearchParams) => {
     param.append('checkOut', search.checkOut || '');
     param.append('adultCount', search.adultCount || '');
     param.append('childCount', search.childCount || '');
+    param.append('page', search.page || '1');
+    param.append('sortOption', search.sortOption || '');
+
+    search.starRating?.forEach((star)=> (
+      param.append('starRating',star)
+      
+    ));
+    search.facilities?.forEach((facility)=> (
+      param.append('facilities',facility)
+      
+    ));
+    search.Types?.forEach((type)=> (
+      param.append('Types',type)
+      
+    ));
+    
 
     const SearchPage = await axios.get(`/api/search/Searches?${param}`);
     return SearchPage.data;
@@ -82,7 +103,9 @@ export default function SearchBar() {
   const { data, error, isLoading, refetch } = useQuery(
     ['hotelled', search],
     () => SearchParam(search),
-    { enabled: false }
+    { 
+      enabled: !!search.page,
+    }
   );
 
   const handleSubmit = (event: FormEvent) => {
@@ -98,7 +121,7 @@ export default function SearchBar() {
   const minDate = new Date();
   const maxDate = new Date();
   maxDate.setFullYear(maxDate.getFullYear() + 1);
-
+  const totalPages = data?.pagination?.pages ?? 0;
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -197,9 +220,17 @@ export default function SearchBar() {
             <div>
               {
                 data?.data.map((hotel)=>(
+                  <div>
                     <Search hotel={hotel}/>
+                    
+                    </div>
                 ))
               }
+            <Pagination
+              page={data?.pagination.page}
+              pages={data?.pagination.pages}
+              onpageChange={(page)=>setPage(page)}
+            />
             </div>
           
           </div>
