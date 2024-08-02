@@ -28,6 +28,12 @@ export default function Search({ hotel }) {
                             </div>
                             <h2 className='text-2xl font-bold mb-2'>{hotel.name}</h2>
                             <p className='flex '>  {hotel.adultCount} Adults ,  {hotel.childCount} Children </p>
+                            <p className='flex '>  {hotel.adultCount} Adults ,  {hotel.childCount} Children </p>
+
+                            <p className='flex '>  {hotel.adultCount} Adults ,  {hotel.childCount} Children </p>
+
+                            <p className='flex '>  {hotel.adultCount} Adults ,  {hotel.childCount} Children </p>
+
                         </div> 
                     </div>
                     <div>
