@@ -249,28 +249,41 @@ body {
 }
 .ShowingFilter{
   display:grid;
-  grid-template-columns:250px 1fr;
+ grid-template-columns:250px 1fr;
+  margin-top:1rem;
+
   
 }
+.space-y-5 > * {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
 .filter{
-  position:sticky;
-  border:1px solid rgb(204, 202, 202);
-  border-radius:5px;
-  margin-left: 1rem;;
-  margin-top:2rem;
-  margin-left:1rem;
-  font-weight:bold;
+  position: sticky;
+  border: 1px solid rgb(204, 202, 202);
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 1rem;
+  width: 250px; 
+  height: 100vh; 
+  overflow-y: auto; 
+  margin-left:2rem;
 
 }
+.text-color{
+  color:rgb(102, 95, 95);
+  font-weight: lighter;
+}
 .specificPage{
-  background: gray;
+  background: aliceblue;
   color:black;
   display:flex;
   flex-direction:row;
   padding:0.5rem;
   padding-left:0.7rem;
   padding-right:0.7rem;
-  border:1px solid rgb(102, 96, 96);
+  border:1px solid rgb(205, 201, 201);
   cursor:pointer;
   margin-bottom: 10rem;;
 }
@@ -278,11 +291,13 @@ body {
   background: rgb(197, 194, 194);
   
 }
-.HotelsBar{
-
-  margin-top:2rem;
-  margin-left: 1rem;;
+.HotelsBar {
+  flex-grow: 1;
+  padding: 1rem;
 }
+
+
+
 .SearchItemGrid{
   display:grid;
   grid-template-columns:1fr 2fr;
@@ -313,6 +328,14 @@ body {
   margin-top: 0.4rem;
 
 }
+.sortingOption{
+  width:10rem;
+  margin-right:2rem;
+  height:3rem;
+  text-align:center;
+  background-color:rgb(228, 232, 236);
+}
+
 .Booking-button:hover{
   cursor: pointer;
   border-radius:4px;
@@ -322,4 +345,19 @@ body {
   margin-right: 1rem;
   margin-bottom: 1rem;
   margin-top: 0.4rem;
+}
+@media (max-width: 768px) {
+  .ShowingFilter {
+    flex-direction: column;
+  }
+
+  .filter {
+    position: relative;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .HotelsBar {
+    margin-left: 0;
+  }
 }

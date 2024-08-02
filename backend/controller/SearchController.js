@@ -5,18 +5,18 @@ const SearchPage = expressAsyncHandler(async (req, res) => {
     try {
         const query=constructSearchQuery(req.query);
 
-        const sortOption={}
-        switch(sortOption){
-            case "starRating":
-                sortOption={starRating:-1}
-                break;
-            case "LowToHigh":
-                sortOption={pricePerNight: 1}
-                break;
-            case "HighToLow":
-                sortOption={pricePerNight: -1}
-                break;
-        }
+       let sortOption={}
+       switch(req.query.sortOption){
+        case "starRating":
+            sortOption={starRating:-1}
+            break;
+        case "LowToHigh":
+            sortOption={pricePerNight:1}
+            break;
+        case "HighToLow":
+            sortOption={pricePerNight:-1}
+            break;
+       }
         const pageSize = 5;
         const pageNo = parseInt(req.query.page ? req.query.page.toString() : '1');
         const skip = (pageNo - 1) * pageSize;
@@ -43,6 +43,13 @@ const SearchPage = expressAsyncHandler(async (req, res) => {
 
 const constructSearchQuery=(queryParam)=>{
     let constructQuery={}
+    if (queryParam.destination) {
+        constructQuery.$or = [
+          { city: new RegExp(queryParam.destination, "i") },
+          { country: new RegExp(queryParam.destination, "i") },
+        ];
+      }
+    
     if (queryParam.adultCount){
         constructQuery.adultCount={
             $gte:parseInt(queryParam.adultCount)
@@ -58,9 +65,9 @@ const constructSearchQuery=(queryParam)=>{
            $all: Array.isArray(queryParam.facilities)?  queryParam.facilities : [queryParam.facilities]
         }
     }
-    if (queryParam.types){
-        constructQuery.types={
-           $in: Array.isArray(queryParam.types)?  queryParam.types : [queryParam.types]
+    if (queryParam.Types){
+        constructQuery.Types={
+           $in: Array.isArray(queryParam.Types)?  queryParam.Types : [queryParam.Types]
         }
     }
     if (queryParam.starRating){

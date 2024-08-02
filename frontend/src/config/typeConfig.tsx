@@ -21,7 +21,7 @@ export const TypeConfig = [
     "Parking",
     "Airport Shuttle",
     "Family Rooms",
-    "Non-Smoking Rooms",
+    "Non-Smoking Room",
     "Outdoor Pool",
     "Spa",
     "Fitness Center",
