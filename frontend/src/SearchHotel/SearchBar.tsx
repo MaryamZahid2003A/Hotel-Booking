@@ -55,11 +55,11 @@ const SearchParam = async (search: SearchParams) => {
 export default function SearchBar() {
   const navigate = useNavigate();
   const [page, setPage] = useState<number>(1);
-  const [destination, setDestination] = useState<string>('');
-  const [checkIn, setCheckIn] = useState<Date>(new Date());
-  const [checkOut, setCheckOut] = useState<Date>(new Date());
-  const [adultCount, setAdultCount] = useState<number>(1);
-  const [childCount, setChildCount] = useState<number>(0);
+  const [destination, setDestination] = useState<string>(()=>sessionStorage.getItem('destination') || '');
+  const [checkIn, setCheckIn] = useState<Date>(new Date(sessionStorage.getItem('checkIn') || new Date().toISOString()));
+  const [checkOut, setCheckOut] = useState<Date>(new Date(sessionStorage.getItem('checkOut') || new Date().toISOString()))
+  const [adultCount, setAdultCount] = useState<number>(()=>parseInt(sessionStorage.getItem('adultCount') || '1'));
+  const [childCount, setChildCount] = useState<number>(()=>parseInt(sessionStorage.getItem('childCount') || '0'));
   const [selectedStar, setSelectedStar] = useState<string[]>([]);
   const [selectedType, setSelectedType] = useState<string[]>([]);
   const [selectedFacility, setSelectedFacility] = useState<string[]>([]);
@@ -72,6 +72,11 @@ export default function SearchBar() {
     setCheckOut(checkOut);
     setAdultCount(adultCount);
     setChildCount(childCount);
+    sessionStorage.setItem("destination",destination)
+    sessionStorage.setItem("checkIn",checkIn.toISOString())
+    sessionStorage.setItem("checkOut",checkOut.toISOString())
+    sessionStorage.setItem('adultCount',adultCount.toString())
+    sessionStorage.setItem('childCount',childCount.toString())
   };
 
   const search = {
@@ -195,7 +200,7 @@ export default function SearchBar() {
               selectsEnd
               startDate={checkIn}
               endDate={checkOut}
-              minDate={checkIn}
+              minDate={minDate}
               maxDate={maxDate}
               placeholderText="Check Out Date"
               className="w-64 text-center"

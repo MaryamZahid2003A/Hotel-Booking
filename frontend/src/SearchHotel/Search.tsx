@@ -1,6 +1,8 @@
 import React from 'react';
 import { FaStar,FaUser,FaMapMarkerAlt} from 'react-icons/fa';
 import { hotelFacilities } from '../config/typeConfig';
+import { Link } from 'react-router-dom';
+import Booking from './Booking.tsx';
 
 
 export default function Search({ hotel }) {
@@ -28,12 +30,6 @@ export default function Search({ hotel }) {
                             </div>
                             <h2 className='text-2xl font-bold mb-2'>{hotel.name}</h2>
                             <p className='flex '>  {hotel.adultCount} Adults ,  {hotel.childCount} Children </p>
-                            <p className='flex '>  {hotel.adultCount} Adults ,  {hotel.childCount} Children </p>
-
-                            <p className='flex '>  {hotel.adultCount} Adults ,  {hotel.childCount} Children </p>
-
-                            <p className='flex '>  {hotel.adultCount} Adults ,  {hotel.childCount} Children </p>
-
                         </div> 
                     </div>
                     <div>
@@ -58,9 +54,10 @@ export default function Search({ hotel }) {
                   </div>
                   <div className='flex flex-col '>
                     <div className='font-bold pr-10 mr-10'>$ {hotel.pricePerNight} Per Night</div>
-                    <button className='Booking-button'>
-                      Book
-                    </button>
+                    <Link to='/reserve/booking'>
+                    <button className='Booking-button'>Book </button>
+                    </Link>
+                   
                   </div>
             </div>
         </div>
