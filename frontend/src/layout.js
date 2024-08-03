@@ -46,7 +46,7 @@ export default function Layout() {
         (
         <div className='flex flex-row '>
               <div className='flex flex-col sm:flex-row '>
-                  <Link to='/booking'>
+                  <Link to={`/MyBooking/${userInfo._id}`}>
                   <button className='w-28 h-10 mt-6 bg-yellow-400 font-bold text-black mr-14 rounded-sm hover:bg-yellow-600 hover:text-black transition ease-in-out delay-200 '>
                     My Booking
                   </button>

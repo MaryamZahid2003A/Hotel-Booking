@@ -30,15 +30,6 @@ export default function Booking() {
   const minDate = new Date();
   const maxDate = new Date();
   maxDate.setFullYear(maxDate.getFullYear() + 1);
-
-
-  console.log(hotelId)
-  console.log(userId)
-  console.log(firstName)
-  console.log(lastName)
-  console.log(`check in${checkIn}`)
-  console.log(`check out${checkOut}`)
- console.log(night)
   
 
   const onSubmit=handleSubmit(async()=>{

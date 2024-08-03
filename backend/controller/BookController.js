@@ -15,7 +15,6 @@ const book = expressAsyncHandler(async (req, res) => {
             checkIn,
             checkOut
         });
-
         if (newBooking) {
             generateToken(res, newBooking._id);
             res.status(200).json(newBooking);
@@ -26,4 +25,7 @@ const book = expressAsyncHandler(async (req, res) => {
     }
 });
 
-export { book };
+
+
+
+export { book};

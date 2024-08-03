@@ -2,7 +2,7 @@ import expressAsyncHandler from "express-async-handler";
 import multer from 'multer';
 import { v2 as cloudinary } from 'cloudinary';
 import Hotel from "../models/HotelModel.js";
-
+import Booking from "../models/BookingModel.js";
 const storage = multer.memoryStorage();
 const upload = multer({
     storage: storage,
@@ -73,6 +73,21 @@ const my_hotel = expressAsyncHandler(async (req, res) => {
   
 });
 
+
+
+const Book_view_hotel = expressAsyncHandler(async (req, res) => {
+  const { id } = req.params;
+  try {
+    const hotels = await Booking.find({ userId: id });
+    if (!hotels) {
+      return res.status(404).json({ message: 'Booking not found' });
+    }
+    return res.status(200).json(hotels);
+  } catch (error) {
+    return res.status(400).json({ message: 'Cannot give booking data', error: error.message });
+  }
+});
+
 const view_hotel = expressAsyncHandler(async (req, res) => {
     const { id } = req.params;
     console.log(`router id:  by view${id}`);
@@ -91,12 +106,13 @@ const view_hotel = expressAsyncHandler(async (req, res) => {
 
   const view_specific_hotel = expressAsyncHandler(async (req, res) => {
     const { id } = req.params;
-    const { hotelId } = req.params;
 
-    console.log(`router id:  by view${id}`);
+    console.log(`router id:  by booking${id}`);
     try {
-      const hotels = await Hotel.find({ _id: hotelId });
-      res.status(200).json(hotels)
+      const hotel = await Booking.findById(id); 
+      console.log('hello')
+      console.log(hotel)
+      res.status(200).json(hotel)
     } catch (error) {
       console.error('Error fetching hotel:', error);
       res.status(500).json({ message: 'Server error' });
@@ -110,7 +126,7 @@ const view_hotel = expressAsyncHandler(async (req, res) => {
     console.log(`Hotel ID: ${hotelId}`);
   
     try {
-      const hotel = await Hotel.findById(hotelId); // Corrected this line to use findById
+      const hotel = await Hotel.findById(hotelId); 
   
       if (!hotel) {
         return res.status(404).json({ message: 'Hotel not found' });
@@ -142,4 +158,4 @@ const view_hotel = expressAsyncHandler(async (req, res) => {
   
   
   
-export { my_hotel,view_hotel,edit_hotel,view_specific_hotel };
+export { my_hotel,view_hotel,edit_hotel,view_specific_hotel,Book_view_hotel };

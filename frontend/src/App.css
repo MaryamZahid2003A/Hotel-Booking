@@ -406,7 +406,10 @@ body {
   text-align:center;
   background-color:rgb(228, 232, 236);
 }
-
+.BookingSection{
+  margin-top: 7rem;
+  
+}
 .Booking-button:hover{
   cursor: pointer;
   border-radius:4px;
