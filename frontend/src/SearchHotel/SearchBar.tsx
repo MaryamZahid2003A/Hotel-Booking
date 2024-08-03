@@ -13,6 +13,8 @@ import Facility from "./Facility.tsx";
 import Types from './Types.tsx';
 import MaxPrice from "./MaxPrice.tsx";
 
+
+
 export type SearchParams = {
   destination?: string;
   checkIn?: string;

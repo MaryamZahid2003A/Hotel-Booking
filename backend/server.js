@@ -7,6 +7,8 @@ import userRouter from './routers/UserRouters.js';
 import hotelRouter from './routers/HotelRouters.js';
 import SearchRouter from './routers/SearchRouter.js';
 import { v2 as cloudinary } from 'cloudinary';
+import BookRouter from './routers/BookRouter.js';
+
 
 dotenv.config();
 
@@ -28,6 +30,7 @@ app.get('/', (req, res) => res.send("server is ready"));
 app.use('/api/hotel', hotelRouter);
 app.use('/api/users', userRouter);
 app.use('/api/search', SearchRouter);
+app.use('/api/booking',BookRouter)
 
 
 app.listen(port, () => {

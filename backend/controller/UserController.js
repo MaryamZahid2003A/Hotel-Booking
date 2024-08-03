@@ -32,7 +32,6 @@ const register = expressAsyncHandler(async (req, res) => {
       return res.status(400).json({ message: 'User Already Exists!' });
       
     }
-
     const user = await User.create({ name, email, password });
     if (user) {
       generateToken(res, user._id);
