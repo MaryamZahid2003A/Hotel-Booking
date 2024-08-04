@@ -28,8 +28,17 @@ export default function SpecificHotel() {
             <h1 className='text-white text-3xl mt-20 text-center'>Hotel Details</h1>
             <h1 className='text-black text-4xl mt-10 ml-10 font-bold text-center'>My Hotel</h1>
             <div className='grid grid-cols-1'>
-               
+
                         <div key={id} className='individualItem'>
+                        <div className='w-full h-[300px] overflow-hidden'>
+                                    <img 
+                                    src={hotels.imageurls.toString()} 
+                                    alt='Hotel Image'
+                                    className=' object-center mt-10 ml-10 ' 
+                                    width='300'
+                                    height='300'
+                                    />
+                                </div>
                              <h2 className='text-3xl text-red-800 mt-5 font-bold ml-10'>{hotels.name}</h2>
                                 <p className='ml-10 mt-10'>{hotels.description.substring(0,700) } . . .</p>    
                             <div className='indvidual'>

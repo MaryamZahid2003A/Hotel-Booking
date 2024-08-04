@@ -13,7 +13,7 @@ export default function Header() {
 
         <Link to='/reserve'>
         <div className='items-center'>
-            <button className='w-36 h-14 text-black mr-14 border-4 ml-10 border-black  transition ease-in-out delay-80 mt-6 hover:bg-white hover:text-black'>
+            <button className='w-36 h-14 text-black mr-14 border-4 ml-10 border-black  transition ease-in-out delay-80 mt-6 hover:bg-gray-300 hover:text-black'>
             Reserve Now
             </button>
             </div>

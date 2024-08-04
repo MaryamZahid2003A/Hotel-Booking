@@ -32,8 +32,8 @@ export default function Layout() {
       <Link to='/'>
         <div className='ml-10 flex flex-row'>
           <img src="https://cdn-icons-png.flaticon.com/128/1090/1090663.png" width='70' height='30' className='mt-3'/>
-          <h1 className='text-white text-3xl ml-10 mt-8 font-sans italic hidden sm:block md:inline-block '>
-            <span className='font-extrabold text-3xl '>Hill Town</span> Resort
+          <h1 className='text-white text-3xl ml-10 font-sans   mt-6 hidden sm:block md:inline-block '>
+            <span className='font-bold text-4xl '>Hill Town</span> Resort
           </h1> 
         </div>
         </Link>
