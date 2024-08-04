@@ -15,6 +15,7 @@ import ReadMore from './viewHotel/ReadMore.tsx';
 import Search from './SearchHotel/Search.tsx';
 import Booking from './SearchHotel/Booking.tsx';
 import MyBooking from './viewHotel/MyBooking.tsx';
+import SpecificHotel from './viewHotel/SpecificHotel.tsx';
 function App() {
   return (
     <div className='main'>
@@ -28,10 +29,9 @@ function App() {
             <Route path='/' element={<PrivateRoute/>}>
                 <Route path="/Managehotel" element={<Manage />} />
                 <Route path="/MyBooking/:id" element={<MyBooking />} />
+                <Route path="/hotel/:id/:hotelId" element={<SpecificHotel />} />
                 <Route path="/view/:id" element={<ViewHotel />} />
                 <Route path="/view/:id/:hotelId" element={<ReadMore />} />
-
-
             </Route>
             <Route path="/search" element={<Search />} />
             <Route path="/booking/:hotelId" element={<Booking />} />

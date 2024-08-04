@@ -10,46 +10,41 @@ import Facility from '../Hotel/Facility.tsx';
 import TypeForm from '../Hotel/TypeForm.tsx';
 import Guest from '../Hotel/Guest.tsx';
 import Image from '../Hotel/Image.tsx';
-import { useDispatch } from 'react-redux';
-import { setHotelCredentials } from '../store/slice/HotelSlice.js';
 import { HotelFormData } from '../Hotel/AddHotel';
 
 function ReadMore() {
   const [error, setError] = useState<string | null>(null);
   const { id, hotelId } = useParams<{ id: string; hotelId: string }>();
   const methods = useForm<HotelFormData>();
-  const { handleSubmit, reset, formState: { errors } } = methods;
-  const dispatch = useDispatch();
+  const { handleSubmit, reset } = methods;
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchHotelData = async () => {
       try {
         const response = await axios.get(`/api/hotel/check/${id}/${hotelId}`);
-        const hotelData = response.data[0];
+        const hotelData = response.data;
         console.log('Fetched Hotel Data:', hotelData);
 
-        if (!hotelData) {
+        if (hotelData) {
+          const formattedData = {
+            name: hotelData.name,
+            city: hotelData.city,
+            country: hotelData.country,
+            description: hotelData.description,
+            type: hotelData.type,
+            pricePerNight: hotelData.pricePerNight,
+            starRating: hotelData.starRating,
+            adultCount: hotelData.adultCount,
+            childCount: hotelData.childCount,
+            facilities: hotelData.facilities,
+            imageurls: hotelData.imageurls
+          };
+          console.log('Formatted Data for Reset:', formattedData);
+          reset(formattedData);
+        } else {
           setError('Hotel data not found');
-          return;
         }
-
-        const formattedData = {
-          name: hotelData.name,
-          city: hotelData.city,
-          country: hotelData.country,
-          description: hotelData.description,
-          type: hotelData.type,
-          pricePerNight: hotelData.pricePerNight,
-          starRating: hotelData.starRating,
-          adultCount: hotelData.adultCount,
-          childCount: hotelData.childCount,
-          facilities: hotelData.facilities,
-          imageurls: hotelData.imageurls
-        };
-        console.log('Formatted Data for Reset:', formattedData);
-
-        reset(formattedData);
       } catch (error) {
         setError('Error fetching hotel data');
         console.error('Error fetching hotel data:', error);
@@ -83,15 +78,11 @@ function ReadMore() {
 
     try {
       setLoading(true);
-      const res = await axios.put(`/api/hotel/check/${id}/${hotelId}`, formData, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+      const res = await axios.put(`/api/hotel/check/${id}/${hotelId}`, formData);
       console.log('Response from API:', res);
       toast.success('Hotel Updated Successfully!');
     } catch (error) {
-      
+      console.error('Failed to update hotel:', error);
       toast.error('Failed to update hotel.');
     } finally {
       setLoading(false);

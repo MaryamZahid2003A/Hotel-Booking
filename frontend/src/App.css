@@ -408,7 +408,18 @@ body {
 }
 .BookingSection{
   margin-top: 7rem;
+  text-align:center;
   
+}
+.Book{
+  display:flex;
+  flex-direction:row;
+  margin-left:10rem;
+  margin-top:5rem;
+  width:32rem;
+  height:19rem;
+  border:1px solid gray;
+  border-radius:1rem;
 }
 .Booking-button:hover{
   cursor: pointer;
@@ -420,11 +431,28 @@ body {
   margin-bottom: 1rem;
   margin-top: 0.4rem;
 }
-@media (max-width: 768px) {
+.IndividualBooking{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+}
+.Bookheading{
+  font-size:1rem;
+  margin-top:1rem;
+  text-align: start;
+  margin-left:1rem;
+
+}
+@media (max-width: 650px) {
   .ShowingFilter {
     flex-direction: column;
   }
 
+  .IndividualBooking{
+    display:flex;
+    flex-direction:col;
+    flex-wrap:nowrap;
+  }
   .filter {
     position: relative;
     width: 100%;

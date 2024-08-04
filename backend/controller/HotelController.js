@@ -105,11 +105,11 @@ const view_hotel = expressAsyncHandler(async (req, res) => {
   });
 
   const view_specific_hotel = expressAsyncHandler(async (req, res) => {
-    const { id } = req.params;
+    const { hotelId } = req.params;
 
-    console.log(`router id:  by booking${id}`);
+    console.log(`router id:  by booking${hotelId}`);
     try {
-      const hotel = await Booking.findById(id); 
+      const hotel = await Hotel.findById(hotelId); 
       console.log('hello')
       console.log(hotel)
       res.status(200).json(hotel)
@@ -131,8 +131,7 @@ const view_hotel = expressAsyncHandler(async (req, res) => {
       if (!hotel) {
         return res.status(404).json({ message: 'Hotel not found' });
       }
-  
-      // Update hotel details
+ 
       hotel.name = req.body.name || hotel.name;
       hotel.city = req.body.city || hotel.city;
       hotel.country = req.body.country || hotel.country;
