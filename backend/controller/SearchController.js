@@ -24,7 +24,7 @@ const SearchPage = expressAsyncHandler(async (req, res) => {
 
         
         const hotels = await Hotel.find(query).sort(sortOption).skip(skip).limit(pageSize); 
-        const total = await Hotel.countDocuments();
+        const total = await Hotel.countDocuments(query);
         
         const response= {
             data: hotels,
@@ -67,14 +67,14 @@ const constructSearchQuery=(queryParam)=>{
     }
     if (queryParam.Types){
         constructQuery.Types={
-           $in: Array.isArray(queryParam.Types)?  queryParam.Types : [queryParam.Types]
+           $in: Array.isArray(queryParam.Types)? [queryParam.Types]: queryParam.Types
         }
     }
-    if (queryParam.starRating){
-        constructQuery.starRating={
-           $eq: Array.isArray(queryParam.starRating)?  parseInt(queryParam.starRating): queryParamstarRating.map((star)=>(parseInt(star)))
-        }
-    }
+    if (queryParam.starRating) {
+        constructQuery.starRating = {
+          $in: Array.isArray(queryParam.starRating) ? queryParam.starRating.map(star => parseInt(star)) : [parseInt(queryParam.starRating)]
+        };
+      }
     if (queryParam.maxPrice){
         constructQuery.maxPrice={
            $lte: parseInt(queryParam.maxPrice)

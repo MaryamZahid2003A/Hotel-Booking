@@ -91,6 +91,7 @@ const Book_view_hotel = expressAsyncHandler(async (req, res) => {
 const view_hotel = expressAsyncHandler(async (req, res) => {
     const { id } = req.params;
     console.log(`router id:  by view${id}`);
+    
     try {
       const hotels = await Hotel.find({ userId: id });
       if (hotels.length > 0) {
@@ -124,6 +125,7 @@ const view_hotel = expressAsyncHandler(async (req, res) => {
   const edit_hotel = expressAsyncHandler(async (req, res) => {
     const { hotelId } = req.params;
     console.log(`Hotel ID: ${hotelId}`);
+    console.log('Request Body:', req.body);
   
     try {
       const hotel = await Hotel.findById(hotelId); 
