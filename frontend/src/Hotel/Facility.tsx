@@ -7,7 +7,6 @@ import {TypeConfig,hotelFacilities} from '../config/typeConfig.tsx';
 import { useFormContext } from 'react-hook-form';
 import { HotelFormData } from './AddHotel.tsx';
 
-
 function Facility() {
   const { register,formState: { errors } } = useFormContext<HotelFormData>();
 
