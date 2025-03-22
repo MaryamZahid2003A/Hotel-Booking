@@ -33,6 +33,11 @@ app.use('/api/search', SearchRouter);
 app.use('/api/booking',BookRouter)
 
 
-app.listen(port, () => {
-    console.log(`Server started at port ${port}`);
-});
+try {
+    app.listen(port, () => {
+        console.log(`✅ Server started at port ${port}`);
+    });
+} catch (err) {
+    console.error("❌ Server start error:", err.message);
+}
+
