@@ -23,13 +23,14 @@ const onSubmit = async (data) => {
       toast.success('Registered Successfully', { autoClose: 2000 }); 
       navigate('/login'); 
     } catch (error) {
-      toast.error(error?.data?.message || error.message, { autoClose: 2000 });
+      toast.error(error?.data?.message || error.message, { autoClose: 1000 });
       console.error(error?.data?.message || error.message);
     }
   };
 
   return (
     <div className='flex justify-center items-center flex-col sm:ml-6 md:ml-20 mt-20'>
+    
       <form className='flex flex-col mt-10 mx-4 sm:mt-20 sm:mx-30 md:mx-40 lg:mx-72 h-96 w-96 bg-black rounded-lg border-b-2 border-b-white' onSubmit={handleSubmit(onSubmit)}>
       <input
           id='title'

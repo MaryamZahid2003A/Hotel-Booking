@@ -53,7 +53,7 @@ export default function Booking() {
       <section className='flex flex-col'>
         <form onSubmit={onSubmit}>
         <header className="BookingName">
-          Booking Details
+          Booked Hotel's By Tourists
         </header>
         <section className="flex flex-row mb-10">
           <section className="Booking1">

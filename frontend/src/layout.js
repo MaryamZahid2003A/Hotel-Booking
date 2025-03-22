@@ -39,9 +39,10 @@ export default function Layout() {
         </Link>
         {!userInfo?
         (  <Link to='/signup'>
-          <button className='w-28 h-14 mt-6 bg-yellow-400 font-bold text-black mr-14 rounded-sm hover:bg-yellow-600 hover:text-black transition ease-in-out delay-200 '>
+          <button className='w-28 h-14 mt-3 bg-yellow-400 font-bold text-black mr-14 rounded-sm hover:bg-yellow-600 hover:text-black transition ease-in-out delay-200 '>
             Sign Up
           </button>
+          <p className='text-yellow-400'>Hotels Owner Registration</p>
       </Link>):
         (
         <div className='flex flex-row '>
