@@ -14,7 +14,7 @@ services:
     depends_on:
       - mongo
     environment:
-      - MONGO_URI=mongodb://mongo:27017/BOOKINGAUTH
+      - MONGO_DB=mongodb://mongo:27017/BOOKINGAUTH
 
   frontend:
     image: maryam5/mern-frontend
