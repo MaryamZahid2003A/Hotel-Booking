@@ -2,20 +2,20 @@ version: '3.8'
 services:
   mongo:
     image: mongo
-    volumes:
-      - mongo-data:/data/db
     ports:
       - "27017:27017"
-  
+    volumes:
+      - mongo-data:/data/db
+
   backend:
-    build: ./backend
+    image: maryam5/mern-backend
     ports:
-      - "8000:9000"
+      - "8000:8000"
     depends_on:
       - mongo
 
   frontend:
-    build: ./frontend
+    image: maryam5/mern-frontend
     ports:
       - "3000:3000"
     depends_on:
