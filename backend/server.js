@@ -8,9 +8,12 @@ import hotelRouter from './routers/HotelRouters.js';
 import SearchRouter from './routers/SearchRouter.js';
 import { v2 as cloudinary } from 'cloudinary';
 import BookRouter from './routers/BookRouter.js';
-
+import cors from "cors";
 
 dotenv.config();
+
+
+
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -22,6 +25,14 @@ const port = 5000;
 db();
 
 const app = express();
+app.use(
+  cors({
+    origin: "http://18.205.235.146:3000", // your frontend URL
+    credentials: true, // allows cookies to be sent
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
