@@ -34,7 +34,7 @@ app.use('/api/booking',BookRouter)
 
 
 try {
-    app.listen(port, () => {
+    app.listen(port,'0.0.0.0',() => {
         console.log(`✅ Server started at port ${port}`);
     });
 } catch (err) {
