@@ -27,7 +27,7 @@ db();
 const app = express();
 app.use(
   cors({
-    origin: "http://18.205.235.146:3000", // your frontend URL
+    origin: "http://3.85.2.112:3000", // your frontend URL
     credentials: true, // allows cookies to be sent
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
