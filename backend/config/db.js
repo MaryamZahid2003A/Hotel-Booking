@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const db = async () => {
     try {
         console.log("⏳ Connecting to MongoDB...");
-        await mongoose.connect(process.env.MONGO_DB, {
+        await mongoose.connect("mongodb://mongo:27017/BookingAuth", {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });

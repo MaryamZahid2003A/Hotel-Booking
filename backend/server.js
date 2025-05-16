@@ -16,9 +16,9 @@ dotenv.config();
 
 
 cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
+    cloud_name: "dwnlovi9y",
+    api_key: "268985236769276",
+    api_secret: "8-DMSqjaGYmUyNckgiRfUqHazuU",
 });
 
 const port = 5000;
@@ -27,8 +27,8 @@ db();
 const app = express();
 app.use(
   cors({
-    origin: "http://3.85.2.112:3000", // your frontend URL
-    credentials: true, // allows cookies to be sent
+    origin: "http://localhost:3000", 
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
