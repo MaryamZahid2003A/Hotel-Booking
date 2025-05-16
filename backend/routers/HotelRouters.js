@@ -8,10 +8,6 @@ const router = express.Router();
 router.post('/', protect, my_hotel);
 router.get('/view/:id', protect, view_hotel); 
 router.route('/check/:id/:hotelId').put(protect,edit_hotel).get(protect,view_specific_hotel);
-
 router.get('/MyBooking/:id',protect,Book_view_hotel);
-
-
-
 
 export default router;

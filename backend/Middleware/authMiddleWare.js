@@ -2,12 +2,13 @@ import jwt from 'jsonwebtoken';
 import expressAsyncHandler from 'express-async-handler';
 import User from '../models/UserModel.js';
 
+const SECRET_KEY="MARYAM123"
 const protect = expressAsyncHandler(async (req, res, next) => {
     try {
         let token;
         if (req.cookies && req.cookies.jwt) {
             token = req.cookies.jwt;
-            const decoded = jwt.verify(token, process.env.SECRET_KEY);
+            const decoded = jwt.verify(token, SECRET_KEY);
             req.user = await User.findById(decoded.UserId).select('-password');
             if (!req.user) {
                 return res.status(404).json({ message: 'User not found' });
