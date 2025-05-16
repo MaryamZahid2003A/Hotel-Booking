@@ -1,27 +1,35 @@
-version: '3'
 services:
   frontend:
-    build: ./frontend
+    container_name: frontend-booking
+    build:
+      context: ./frontend
     ports:
-      - "3000:3000"
-    depends_on:
-      - backend
+      - "${F_PORT:-80}:80"
+    volumes:
+      - frontend_volume:/usr/share/nginx/html
 
   backend:
-    build: ./backend
+    container_name: backend-booking
+    build:
+      context: ./backend
     ports:
-      - "5000:5000"
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/BOOKINGAUTH
+      - "${B_PORT:-5000}:5000"
     depends_on:
       - mongo
+    volumes:
+      - ./backend:/app
+      - backend_volume:/app/node_modules
+    working_dir: /app
 
   mongo:
-    image: mongo
+    container_name: mongo-booking
+    image: mongo:6
     ports:
       - "27017:27017"
+    volumes:
+      - mongo_volume:/data/db
 
-
-
-
-
+volumes:
+  backend_volume:
+  frontend_volume:
+  mongo_volume:
